@@ -25,3 +25,9 @@ module IGraph
     attach_function :igraph_version, %i[pointer pointer pointer pointer], :void
   end
 end
+
+# Load all binding modules
+require_relative "libigraph/datatype"
+require_relative "libigraph/vector"
+require_relative "libigraph/constructors"
+require_relative "libigraph/interface"

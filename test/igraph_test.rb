@@ -2,10 +2,10 @@
 
 require "test_helper"
 
-class IgraphTest < Test::Unit::TestCase
+class IGraphTest < Test::Unit::TestCase
   test "VERSION" do
     assert do
-      ::Igraph.const_defined?(:VERSION)
+      ::IGraph.const_defined?(:VERSION)
     end
   end
 

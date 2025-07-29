@@ -2,7 +2,7 @@
 
 require_relative "igraph/version"
 
-module Igraph
+module IGraph
   class Error < StandardError; end
   # Your code goes here...
 end

@@ -2,7 +2,7 @@ require_relative "lib/igraph/version"
 
 Gem::Specification.new do |spec|
   spec.name    = "ruby-igraph"
-  spec.version = Igraph::VERSION
+  spec.version = IGraph::VERSION
   spec.summary = "Library for the analysis of networks"
   spec.license = "MIT"
 

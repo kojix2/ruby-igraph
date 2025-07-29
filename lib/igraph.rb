@@ -34,7 +34,7 @@ module IGraph
         RubyInstaller::Runtime.msys2_installation.msys_path,
         RubyInstaller::Runtime.msys2_installation.mingwarch
       ].join(File::ALT_SEPARATOR)
-      path = File.expand_path("bin/igraph.dll", ENV["IGRAPHDIR"])
+      path = File.expand_path("bin/libigraph.dll", ENV["IGRAPHDIR"])
       RubyInstaller::Runtime.add_dll_directory(File.dirname(path))
       path
     end

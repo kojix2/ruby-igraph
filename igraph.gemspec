@@ -9,8 +9,13 @@ Gem::Specification.new do |spec|
   spec.authors = ["kojix2"]
   spec.email   = ["2xijok@gmail.com"]
 
-  spec.files   = Dir["*.{md, txt}" "lib/**/*"]
+  spec.files   = Dir["*.{md, txt}", "lib/**/*"]
   spec.require_paths = ["lib"]
 
   spec.required_ruby_version = ">= 3.2.0"
+
+  spec.add_dependency "ffi"
+  spec.add_dependency "pkg-config"
+
+  spec.metadata["msys2_mingw_dependencies"] = "igraph"
 end

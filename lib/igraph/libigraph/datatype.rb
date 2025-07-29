@@ -1,16 +1,9 @@
 require "ffi"
 
+require_relative "vector"
+
 module IGraph
   module LibIGraph
-    # igraph_vector_int_t structure (embedded, not pointer)
-    class VectorIntStruct < FFI::Struct
-      layout(
-        :stor_begin, :pointer, # int*
-        :stor_end,   :pointer, # int*
-        :end,        :pointer  # int*
-      )
-    end
-
     class Graph < FFI::Struct
       layout(
         :n, :long_long,           # igraph_integer_t

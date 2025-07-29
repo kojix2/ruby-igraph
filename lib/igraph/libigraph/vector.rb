@@ -2,6 +2,24 @@ require "ffi"
 
 module IGraph
   module LibIGraph
+    # igraph_vector_t structure (double vector)
+    class VectorStruct < FFI::Struct
+      layout(
+        :stor_begin, :pointer, # double*
+        :stor_end,   :pointer, # double*
+        :end,        :pointer  # double*
+      )
+    end
+
+    # igraph_vector_int_t structure (int vector)
+    class VectorIntStruct < FFI::Struct
+      layout(
+        :stor_begin, :pointer, # int*
+        :stor_end,   :pointer, # int*
+        :end,        :pointer  # int*
+      )
+    end
+
     class VectorInt < FFI::Struct
       layout(
         :stor_begin, :pointer, # int*

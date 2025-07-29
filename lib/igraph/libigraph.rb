@@ -27,6 +27,8 @@ module IGraph
 end
 
 # Load all binding modules
+require_relative "libigraph/constants"
+require_relative "libigraph/error"
 require_relative "libigraph/datatype"
 require_relative "libigraph/vector"
 require_relative "libigraph/constructors"

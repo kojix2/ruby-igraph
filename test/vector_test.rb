@@ -6,7 +6,7 @@ class VectorTest < Test::Unit::TestCase
 
     # Initialize vector with size 3
     result = IGraph::LibIGraph.igraph_vector_int_init(vector.pointer, 3)
-    assert_equal 0, result # IGRAPH_SUCCESS
+    assert_equal IGraph::LibIGraph::IGRAPH_SUCCESS, result
 
     # Check size
     size = IGraph::LibIGraph.igraph_vector_int_size(vector.pointer)

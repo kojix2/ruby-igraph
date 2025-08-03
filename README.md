@@ -3,7 +3,7 @@
 [![test](https://github.com/kojix2/ruby-igraph/actions/workflows/test.yml/badge.svg)](https://github.com/kojix2/ruby-igraph/actions/workflows/test.yml)
 [![Lines of Code](https://img.shields.io/endpoint?url=https%3A%2F%2Ftokei.kojix2.net%2Fbadge%2Fgithub%2Fkojix2%2Fruby-igraph%2Flines)](https://tokei.kojix2.net/github/kojix2/ruby-igraph)
 
-Ruby bindings for the igraph library - a collection of network analysis tools.
+Ruby bindings for the [igraph](https://github.com/igraph/igraph) library - a collection of network analysis tools.
 
 ## Installation
 

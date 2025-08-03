@@ -134,7 +134,7 @@ class InterfaceTest < Test::Unit::TestCase
     result = IGraph::LibIGraph.igraph_vs_all(vs_all.pointer)
     assert_equal IGraph::LibIGraph::IGRAPH_SUCCESS, result
 
-    result = IGraph::LibIGraph.igraph_degree(graph.pointer, degrees.pointer, vs_all.pointer,
+    result = IGraph::LibIGraph.igraph_degree(graph.pointer, degrees.pointer, vs_all,
                                              IGraph::LibIGraph::IGRAPH_ALL, false)
     assert_equal IGraph::LibIGraph::IGRAPH_SUCCESS, result
 

@@ -86,6 +86,6 @@ module IGraph
     attach_function :igraph_vs_destroy, [:pointer], :void
 
     # igraph_error_t igraph_degree(const igraph_t *graph, igraph_vector_int_t *res, const igraph_vs_t vids, igraph_neimode_t mode, igraph_bool_t loops);
-    attach_function :igraph_degree, %i[pointer pointer pointer int bool], :int
+    attach_function :igraph_degree, [:pointer, :pointer, VertexSelector.by_value, :int, :bool], :int
   end
 end

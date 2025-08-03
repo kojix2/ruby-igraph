@@ -148,4 +148,26 @@ class InterfaceTest < Test::Unit::TestCase
     IGraph::LibIGraph.igraph_vector_int_destroy(edges.pointer)
     IGraph::LibIGraph.igraph_destroy(graph.pointer)
   end
+
+  test "new interface functions callable" do
+    graph = IGraph::LibIGraph::Graph.new
+
+    # Create a simple graph with edges
+    edges = IGraph::LibIGraph::VectorIntStruct.new
+    IGraph::LibIGraph.igraph_vector_int_init(edges.pointer, 4)
+    IGraph::LibIGraph.igraph_vector_int_set(edges.pointer, 0, 0)
+    IGraph::LibIGraph.igraph_vector_int_set(edges.pointer, 1, 1)
+    IGraph::LibIGraph.igraph_vector_int_set(edges.pointer, 2, 1)
+    IGraph::LibIGraph.igraph_vector_int_set(edges.pointer, 3, 2)
+    IGraph::LibIGraph.igraph_create(graph.pointer, edges.pointer, 3, false)
+
+    # Test igraph_get_eid can be called
+    eid_ptr = FFI::MemoryPointer.new(:int)
+    result = IGraph::LibIGraph.igraph_get_eid(graph.pointer, eid_ptr, 0, 1, false, false)
+    assert_equal IGraph::LibIGraph::IGRAPH_SUCCESS, result
+
+    # Clean up
+    IGraph::LibIGraph.igraph_vector_int_destroy(edges.pointer)
+    IGraph::LibIGraph.igraph_destroy(graph.pointer)
+  end
 end

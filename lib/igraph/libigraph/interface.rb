@@ -5,10 +5,11 @@ require_relative "vector"
 module IGraph
   module LibIGraph
     # igraph_vs_t structure for vertex selectors
+    # Using a more robust approach that matches the C union size
     class VertexSelector < FFI::Struct
       layout(
-        :type, :int, # igraph_vs_type_t
-        :data, [:uint8, 24] # Union data (simplified as byte array)
+        :type, :int,                    # igraph_vs_type_t
+        :data, [:uint8, 16]             # Union data - sized to fit largest union member
       )
     end
     # igraph_error_t igraph_empty(igraph_t *graph, igraph_integer_t n, igraph_bool_t directed);

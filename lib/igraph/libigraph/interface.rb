@@ -24,5 +24,11 @@ module IGraph
 
     # igraph_error_t igraph_add_vertices(igraph_t *graph, igraph_integer_t nv, void *attr);
     attach_function :igraph_add_vertices, %i[pointer long_long pointer], :int
+
+    # igraph_error_t igraph_neighbors(const igraph_t *graph, igraph_vector_int_t *neis, igraph_integer_t vid, igraph_neimode_t mode);
+    attach_function :igraph_neighbors, %i[pointer pointer long_long int], :int
+
+    # igraph_error_t igraph_degree(const igraph_t *graph, igraph_vector_int_t *res, const igraph_vs_t vids, igraph_neimode_t mode, igraph_bool_t loops);
+    attach_function :igraph_degree, %i[pointer pointer int int bool], :int
   end
 end

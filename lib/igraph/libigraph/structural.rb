@@ -45,5 +45,8 @@ module IGraph
 
     # igraph_error_t igraph_are_adjacent(const igraph_t *graph, igraph_integer_t v1, igraph_integer_t v2, igraph_bool_t *res);
     attach_function :igraph_are_adjacent, %i[pointer long_long long_long pointer], :int
+
+    # igraph_error_t igraph_is_connected(const igraph_t *graph, igraph_bool_t *res, igraph_connectedness_t mode);
+    attach_function :igraph_is_connected, %i[pointer pointer int], :int
   end
 end

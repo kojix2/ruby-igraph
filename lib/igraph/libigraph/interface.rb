@@ -51,5 +51,23 @@ module IGraph
 
     # igraph_error_t igraph_degree(const igraph_t *graph, igraph_vector_int_t *res, const igraph_vs_t vids, igraph_neimode_t mode, igraph_bool_t loops);
     attach_function :igraph_degree, [:pointer, :pointer, VertexSelector.by_value, :int, :bool], :int
+
+    # igraph_error_t igraph_delete_edges(igraph_t *graph, igraph_es_t edges);
+    attach_function :igraph_delete_edges, %i[pointer int], :int
+
+    # igraph_error_t igraph_delete_vertices(igraph_t *graph, const igraph_vs_t vertices);
+    attach_function :igraph_delete_vertices, [:pointer, VertexSelector.by_value], :int
+
+    # igraph_error_t igraph_edge(const igraph_t *graph, igraph_integer_t eid, igraph_integer_t *from, igraph_integer_t *to);
+    attach_function :igraph_edge, %i[pointer long_long pointer pointer], :int
+
+    # igraph_error_t igraph_edges(const igraph_t *graph, igraph_es_t eids, igraph_vector_int_t *edges);
+    attach_function :igraph_edges, %i[pointer int pointer], :int
+
+    # igraph_error_t igraph_get_eid(const igraph_t *graph, igraph_integer_t *eid, igraph_integer_t from, igraph_integer_t to, igraph_bool_t directed, igraph_bool_t error);
+    attach_function :igraph_get_eid, %i[pointer pointer long_long long_long bool bool], :int
+
+    # igraph_error_t igraph_incident(const igraph_t *graph, igraph_vector_int_t *eids, igraph_integer_t vid, igraph_neimode_t mode);
+    attach_function :igraph_incident, %i[pointer pointer long_long int], :int
   end
 end

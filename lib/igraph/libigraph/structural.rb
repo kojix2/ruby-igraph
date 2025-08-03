@@ -48,5 +48,11 @@ module IGraph
 
     # igraph_error_t igraph_is_connected(const igraph_t *graph, igraph_bool_t *res, igraph_connectedness_t mode);
     attach_function :igraph_is_connected, %i[pointer pointer int], :int
+
+    # igraph_error_t igraph_average_path_length(const igraph_t *graph, igraph_real_t *res, igraph_real_t *unconn_pairs, igraph_bool_t directed, igraph_bool_t unconn);
+    attach_function :igraph_average_path_length, %i[pointer pointer pointer bool bool], :int
+
+    # igraph_error_t igraph_constraint(const igraph_t *graph, igraph_vector_t *res, igraph_vs_t vids, const igraph_vector_t *weights);
+    attach_function :igraph_constraint, %i[pointer pointer int pointer], :int
   end
 end

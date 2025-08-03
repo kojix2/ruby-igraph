@@ -11,6 +11,10 @@ jobs:
     runs-on: ${{ matrix.os }}-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Fetch all history for all branches and tags
+          fetch-tags: true
+          submodules: true
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
@@ -22,11 +26,14 @@ jobs:
       - name: Install igraph (Ubuntu)
         if: ${{ matrix.os == 'ubuntu' }}
         run: |
-          sudo apt update -y
-          sudo apt install -yq software-properties-common
-          sudo add-apt-repository ppa:igraph/ppa -y
-          sudo apt update -y
-          sudo apt install -yq libigraph-dev
+          sudo apt-get update
+          sudo apt-get install -y build-essential cmake libxml2-dev libgmp-dev libblas-dev liblapack-dev libglpk-dev
+          cd igraph
+          mkdir -p build && cd build
+          cmake .. -DBUILD_SHARED_LIBS=ON -DIGRAPH_ENABLE_LTO=ON -DIGRAPH_OPENMP_SUPPORT=ON -DIGRAPH_GRAPHML_SUPPORT=ON -DIGRAPH_GLPK_SUPPORT=ON -DIGRAPH_ENABLE_TLS=ON -DUSE_CCACHE=ON -DFORCE_COLORED_OUTPUT=ON
+          make -j$(nproc)
+          sudo make install
+          sudo ldconfig
       - name: Install igraph (Windows)
         if: ${{ matrix.os == 'windows' }}
         run: |
@@ -35,4 +42,3 @@ jobs:
       - name: Build and test with Rake
         run: |
           bundle exec rake
-

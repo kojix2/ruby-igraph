@@ -23,6 +23,9 @@ jobs:
         if: ${{ matrix.os == 'ubuntu' }}
         run: |
           sudo apt update -y
+          sudo apt install -yq software-properties-common
+          sudo add-apt-repository ppa:igraph/ppa -y
+          sudo apt update -y
           sudo apt install -yq libigraph-dev
       - name: Install igraph (Windows)
         if: ${{ matrix.os == 'windows' }}
@@ -32,3 +35,4 @@ jobs:
       - name: Build and test with Rake
         run: |
           bundle exec rake
+

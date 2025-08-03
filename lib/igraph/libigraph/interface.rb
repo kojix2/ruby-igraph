@@ -5,12 +5,53 @@ require_relative "vector"
 module IGraph
   module LibIGraph
     # igraph_vs_t structure for vertex selectors
-    # Based on Linux x86_64 diagnostics: total size 24 bytes, type offset 0, data offset 8
+    # Actual C structure:
+    # typedef struct igraph_vs_t {
+    #     igraph_vs_type_t type;
+    #     union {
+    #         igraph_integer_t vid;               /* single vertex  */
+    #         const igraph_vector_int_t *vecptr;  /* vector of vertices  */
+    #         struct {
+    #             igraph_integer_t vid;
+    #             igraph_neimode_t mode;
+    #         } adj;                              /* adjacent vertices  */
+    #         struct {
+    #             igraph_integer_t start;         /* first index (inclusive) */
+    #             igraph_integer_t end;           /* last index (exclusive) */
+    #         } range;                            /* range of vertices */
+    #     } data;
+    # } igraph_vs_t;
+
+    # Nested structures for the union
+    class VertexSelectorAdj < FFI::Struct
+      layout(
+        :vid, :long_long,               # igraph_integer_t
+        :mode, :int                     # igraph_neimode_t
+      )
+    end
+
+    class VertexSelectorRange < FFI::Struct
+      layout(
+        :start, :long_long,             # igraph_integer_t
+        :end, :long_long                # igraph_integer_t
+      )
+    end
+
+    # Union for the data field
+    class VertexSelectorData < FFI::Union
+      layout(
+        :vid, :long_long,               # igraph_integer_t vid (single vertex)
+        :vecptr, :pointer,              # const igraph_vector_int_t *vecptr (vector of vertices)
+        :adj, VertexSelectorAdj,        # adjacent vertices struct
+        :range, VertexSelectorRange     # range of vertices struct
+      )
+    end
+
+    # Main structure
     class VertexSelector < FFI::Struct
       layout(
-        :type, :int,                    # igraph_vs_type_t (4 bytes)
-        :padding, [:uint8, 4],          # Padding to align to 8-byte boundary
-        :data, [:uint8, 16]             # Union data (16 bytes)
+        :type, :int,                    # igraph_vs_type_t
+        :data, VertexSelectorData       # Union data
       )
     end
     # igraph_error_t igraph_empty(igraph_t *graph, igraph_integer_t n, igraph_bool_t directed);

@@ -54,5 +54,29 @@ module IGraph
     # Matrix storage
     IGRAPH_ROW_MAJOR = 0
     IGRAPH_COLUMN_MAJOR = 1
+
+    # Vertex selector types
+    IGRAPH_VS_ALL = 0
+    IGRAPH_VS_ADJ = 1
+    IGRAPH_VS_NONE = 2
+    IGRAPH_VS_1 = 3
+    IGRAPH_VS_VECTORPTR = 4
+    IGRAPH_VS_VECTOR = 5
+    IGRAPH_VS_RANGE = 6
+    IGRAPH_VS_NONADJ = 7
+
+    # Edge selector types
+    IGRAPH_ES_ALL = 0
+    IGRAPH_ES_ALLFROM = 1
+    IGRAPH_ES_ALLTO = 2
+    IGRAPH_ES_INCIDENT = 3
+    IGRAPH_ES_NONE = 4
+    IGRAPH_ES_1 = 5
+    IGRAPH_ES_VECTORPTR = 6
+    IGRAPH_ES_VECTOR = 7
+    IGRAPH_ES_RANGE = 8
+    IGRAPH_ES_PAIRS = 9
+    IGRAPH_ES_PATH = 10
+    IGRAPH_ES_ALL_BETWEEN = 12
   end
 end

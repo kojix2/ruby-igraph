@@ -6,13 +6,13 @@
 <title>
   Class: IGraph::LibIGraph::VertexSelector
   
-    &mdash; Documentation by YARD 0.9.38
+    &mdash; Documentation by YARD 0.9.44
   
 </title>
 
-  <link rel="stylesheet" href="../../css/style.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/style.css" type="text/css">
 
-  <link rel="stylesheet" href="../../css/common.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/common.css" type="text/css">
 
 <script type="text/javascript">
   pathId = "IGraph::LibIGraph::VertexSelector";
@@ -27,6 +27,8 @@
 
   </head>
   <body>
+    <div id="main_progress" aria-hidden="true"></div>
+
     <div class="nav_wrap">
       <iframe id="nav" src="../../class_list.html?1"></iframe>
       <div id="resizer"></div>
@@ -96,22 +98,21 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>lib/igraph/libigraph/interface.rb</dd>
+    <dd>lib/igraph/libigraph/interface.rb
+</dd>
   </dl>
   
 </div>
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    
-<p>igraph_vs_t structure for vertex selectors Simplified definition - union data treated as opaque bytes Actual C structure: typedef struct igraph_vs_t {</p>
-
-<pre class="code ruby"><code class="ruby">igraph_vs_type_t type;
+    <p>igraph_vs_t structure for vertex selectors
+Simplified definition - union data treated as opaque bytes
+Actual C structure:
+typedef struct igraph_vs_t {
+igraph_vs_type_t type;
 union { ... } data;  // 16 bytes on 64-bit systems
-</code></pre>
-
-<p>} igraph_vs_t;</p>
-
+} igraph_vs_t;</p>
 
   </div>
 </div>
@@ -131,9 +132,9 @@ union { ... } data;  // 16 bytes on 64-bit systems
 </div>
 
       <div id="footer">
-  Generated on Fri Feb 27 00:55:34 2026 by
+  Generated on Tue Jun 23 00:14:03 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.38 (ruby-4.0.1).
+  0.9.44 (ruby-4.0.5).
 </div>
 
     </div>

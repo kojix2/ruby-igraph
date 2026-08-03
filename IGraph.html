@@ -6,7 +6,7 @@
 <title>
   Module: IGraph
   
-    &mdash; Documentation by YARD 0.9.44
+    &mdash; Documentation by YARD 0.9.45
   
 </title>
 
@@ -81,7 +81,7 @@
   <dl>
     <dt>Defined in:</dt>
     <dd>lib/igraph.rb<span class="defines">,<br>
-  lib/igraph/version.rb,<br> lib/igraph/libigraph.rb,<br> lib/igraph/libigraph/error.rb,<br> lib/igraph/libigraph/games.rb,<br> lib/igraph/libigraph/paths.rb,<br> lib/igraph/libigraph/matrix.rb,<br> lib/igraph/libigraph/vector.rb,<br> lib/igraph/libigraph/datatype.rb,<br> lib/igraph/libigraph/topology.rb,<br> lib/igraph/libigraph/bipartite.rb,<br> lib/igraph/libigraph/constants.rb,<br> lib/igraph/libigraph/interface.rb,<br> lib/igraph/libigraph/operators.rb,<br> lib/igraph/libigraph/centrality.rb,<br> lib/igraph/libigraph/structural.rb,<br> lib/igraph/libigraph/constructors.rb,<br> lib/igraph/libigraph/transitivity.rb</span>
+  lib/igraph/version.rb,<br> lib/igraph/libigraph.rb,<br> lib/igraph/libigraph/hrg.rb,<br> lib/igraph/libigraph/blas.rb,<br> lib/igraph/libigraph/flow.rb,<br> lib/igraph/libigraph/lsap.rb,<br> lib/igraph/libigraph/scan.rb,<br> lib/igraph/libigraph/eigen.rb,<br> lib/igraph/libigraph/error.rb,<br> lib/igraph/libigraph/games.rb,<br> lib/igraph/libigraph/paths.rb,<br> lib/igraph/libigraph/arpack.rb,<br> lib/igraph/libigraph/bitset.rb,<br> lib/igraph/libigraph/cycles.rb,<br> lib/igraph/libigraph/lapack.rb,<br> lib/igraph/libigraph/layout.rb,<br> lib/igraph/libigraph/matrix.rb,<br> lib/igraph/libigraph/mixing.rb,<br> lib/igraph/libigraph/motifs.rb,<br> lib/igraph/libigraph/random.rb,<br> lib/igraph/libigraph/vector.rb,<br> lib/igraph/libigraph/adjlist.rb,<br> lib/igraph/libigraph/cliques.rb,<br> lib/igraph/libigraph/complex.rb,<br> lib/igraph/libigraph/foreign.rb,<br> lib/igraph/libigraph/spatial.rb,<br> lib/igraph/libigraph/coloring.rb,<br> lib/igraph/libigraph/datatype.rb,<br> lib/igraph/libigraph/matching.rb,<br> lib/igraph/libigraph/nongraph.rb,<br> lib/igraph/libigraph/progress.rb,<br> lib/igraph/libigraph/topology.rb,<br> lib/igraph/libigraph/bipartite.rb,<br> lib/igraph/libigraph/community.rb,<br> lib/igraph/libigraph/constants.rb,<br> lib/igraph/libigraph/embedding.rb,<br> lib/igraph/libigraph/epidemics.rb,<br> lib/igraph/libigraph/interface.rb,<br> lib/igraph/libigraph/interrupt.rb,<br> lib/igraph/libigraph/iterators.rb,<br> lib/igraph/libigraph/operators.rb,<br> lib/igraph/libigraph/sparsemat.rb,<br> lib/igraph/libigraph/statusbar.rb,<br> lib/igraph/libigraph/strvector.rb,<br> lib/igraph/libigraph/attributes.rb,<br> lib/igraph/libigraph/centrality.rb,<br> lib/igraph/libigraph/cocitation.rb,<br> lib/igraph/libigraph/components.rb,<br> lib/igraph/libigraph/conversion.rb,<br> lib/igraph/libigraph/structural.rb,<br> lib/igraph/libigraph/vector_ptr.rb,<br> lib/igraph/libigraph/isomorphism.rb,<br> lib/igraph/libigraph/constructors.rb,<br> lib/igraph/libigraph/graphicality.rb,<br> lib/igraph/libigraph/neighborhood.rb,<br> lib/igraph/libigraph/reachability.rb,<br> lib/igraph/libigraph/transitivity.rb,<br> lib/igraph/libigraph/cohesive_blocks.rb</span>
 
 </dd>
   </dl>
@@ -313,7 +313,7 @@
     <span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>pkg-config</span><span class='tstring_end'>&quot;</span></span>
     <span class='id identifier rubyid_lib_dir'>lib_dir</span> <span class='op'>=</span> <span class='const'>PKGConfig</span><span class='period'>.</span><span class='id identifier rubyid_variable'>variable</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>igraph</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>libdir</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
     <span class='id identifier rubyid_lib_path'>lib_path</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_expand_path'>expand_path</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_lib_dir'>lib_dir</span><span class='rparen'>)</span>
-  <span class='kw'>rescue</span> <span class='const'>PackageConfig</span><span class='op'>::</span><span class='const'>NotFoundError</span>
+  <span class='kw'>rescue</span> <span class='const'>PKGConfig</span><span class='op'>::</span><span class='const'>NotFoundError</span>
     <span class='id identifier rubyid_warn'>warn</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>igraph.pc was not found in the pkg-config search path.</span><span class='tstring_end'>&quot;</span></span>
   <span class='kw'>end</span>
   <span class='kw'>return</span> <span class='id identifier rubyid_lib_path'>lib_path</span> <span class='kw'>if</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_exist?'>exist?</span><span class='lparen'>(</span><span class='id identifier rubyid_lib_path'>lib_path</span><span class='rparen'>)</span>
@@ -372,9 +372,9 @@
 </div>
 
       <div id="footer">
-  Generated on Tue Jun 23 00:14:03 2026 by
+  Generated on Mon Aug  3 14:20:05 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.44 (ruby-4.0.5).
+  0.9.45 (ruby-4.0.6).
 </div>
 
     </div>

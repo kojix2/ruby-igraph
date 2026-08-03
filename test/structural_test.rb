@@ -89,11 +89,13 @@ class StructuralTest < Test::Unit::TestCase
     result = IGraph::LibIGraph.igraph_full(graph.pointer, 4, false, false)
     assert_equal IGraph::LibIGraph::IGRAPH_SUCCESS, result
 
-    # Test if it's complete
-    is_complete = FFI::MemoryPointer.new(:bool)
-    result = IGraph::LibIGraph.igraph_is_complete(graph.pointer, is_complete)
-    assert_equal IGraph::LibIGraph::IGRAPH_SUCCESS, result
-    assert_equal true, is_complete.read_uchar != 0
+    # Test if it's complete (not available in libigraph < 0.10.12)
+    if IGraph::LibIGraph.respond_to?(:igraph_is_complete)
+      is_complete = FFI::MemoryPointer.new(:bool)
+      result = IGraph::LibIGraph.igraph_is_complete(graph.pointer, is_complete)
+      assert_equal IGraph::LibIGraph::IGRAPH_SUCCESS, result
+      assert_equal true, is_complete.read_uchar != 0
+    end
 
     # Test if it's simple
     is_simple = FFI::MemoryPointer.new(:bool)

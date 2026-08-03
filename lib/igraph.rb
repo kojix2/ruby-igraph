@@ -21,7 +21,7 @@ module IGraph
         require "pkg-config"
         lib_dir = PKGConfig.variable("igraph", "libdir")
         lib_path = File.expand_path(name, lib_dir)
-      rescue PackageConfig::NotFoundError
+      rescue PKGConfig::NotFoundError
         warn "igraph.pc was not found in the pkg-config search path."
       end
       return lib_path if File.exist?(lib_path)

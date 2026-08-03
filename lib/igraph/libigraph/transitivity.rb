@@ -15,5 +15,8 @@ module IGraph
 
     # igraph_error_t igraph_transitivity_barrat(const igraph_t *graph, igraph_vector_t *res, const igraph_vs_t vids, const igraph_vector_t *weights, const igraph_transitivity_mode_t mode);
     attach_function :igraph_transitivity_barrat, %i[pointer pointer int pointer int], :int
+
+    # igraph_error_t igraph_ecc(const igraph_t *graph, igraph_vector_t *res, const igraph_vs_t vids, igraph_neimode_t mode, igraph_bool_t loops);
+    attach_function :igraph_ecc, %i[pointer pointer pointer int bool], :int
   end
 end

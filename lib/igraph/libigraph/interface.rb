@@ -21,6 +21,9 @@ module IGraph
     # igraph_error_t igraph_empty(igraph_t *graph, igraph_integer_t n, igraph_bool_t directed);
     attach_function :igraph_empty, %i[pointer long_long bool], :int
 
+    # igraph_error_t igraph_empty_attrs(igraph_t *graph, igraph_integer_t n, igraph_bool_t directed, void *attr);
+    attach_function :igraph_empty_attrs, %i[pointer long_long bool pointer], :int
+
     # void igraph_destroy(igraph_t *graph);
     attach_function :igraph_destroy, [:pointer], :void
 
@@ -33,6 +36,12 @@ module IGraph
     # igraph_bool_t igraph_is_directed(const igraph_t *graph);
     attach_function :igraph_is_directed, [:pointer], :bool
 
+    # igraph_error_t igraph_copy(igraph_t *to, const igraph_t *from);
+    attach_function :igraph_copy, %i[pointer pointer], :int
+
+    # igraph_bool_t igraph_is_same_graph(const igraph_t *graph1, const igraph_t *graph2, igraph_bool_t *res);
+    attach_function :igraph_is_same_graph, %i[pointer pointer pointer], :int
+
     # igraph_error_t igraph_add_edges(igraph_t *graph, const igraph_vector_int_t *edges, void *attr);
     attach_function :igraph_add_edges, %i[pointer pointer pointer], :int
 
@@ -42,7 +51,6 @@ module IGraph
     # igraph_error_t igraph_neighbors(const igraph_t *graph, igraph_vector_int_t *neis, igraph_integer_t vid, igraph_neimode_t mode);
     attach_function :igraph_neighbors, %i[pointer pointer long_long int], :int
 
-    # Vertex selector functions
     # igraph_error_t igraph_vs_all(igraph_vs_t *vs);
     attach_function :igraph_vs_all, [:pointer], :int
 
@@ -52,11 +60,20 @@ module IGraph
     # igraph_error_t igraph_degree(const igraph_t *graph, igraph_vector_int_t *res, const igraph_vs_t vids, igraph_neimode_t mode, igraph_bool_t loops);
     attach_function :igraph_degree, [:pointer, :pointer, VertexSelector.by_value, :int, :bool], :int
 
+    # igraph_error_t igraph_degree_1(const igraph_t *graph, igraph_integer_t *res, igraph_integer_t vid, igraph_neimode_t mode, igraph_bool_t loops);
+    attach_function :igraph_degree_1, %i[pointer pointer long_long int bool], :int
+
     # igraph_error_t igraph_delete_edges(igraph_t *graph, igraph_es_t edges);
     attach_function :igraph_delete_edges, %i[pointer int], :int
 
     # igraph_error_t igraph_delete_vertices(igraph_t *graph, const igraph_vs_t vertices);
     attach_function :igraph_delete_vertices, [:pointer, VertexSelector.by_value], :int
+
+    # igraph_error_t igraph_delete_vertices_idx(igraph_t *graph, const igraph_vs_t vertices, igraph_vector_int_t *idx, igraph_vector_int_t *invidx);
+    attach_function :igraph_delete_vertices_idx, %i[pointer pointer pointer pointer], :int
+
+    # igraph_error_t igraph_delete_vertices_map(igraph_t *graph, const igraph_vs_t vertices, igraph_vector_int_t *idx, igraph_vector_int_t *newidx);
+    attach_function :igraph_delete_vertices_map, %i[pointer pointer pointer pointer], :int
 
     # igraph_error_t igraph_edge(const igraph_t *graph, igraph_integer_t eid, igraph_integer_t *from, igraph_integer_t *to);
     attach_function :igraph_edge, %i[pointer long_long pointer pointer], :int
@@ -66,6 +83,12 @@ module IGraph
 
     # igraph_error_t igraph_get_eid(const igraph_t *graph, igraph_integer_t *eid, igraph_integer_t from, igraph_integer_t to, igraph_bool_t directed, igraph_bool_t error);
     attach_function :igraph_get_eid, %i[pointer pointer long_long long_long bool bool], :int
+
+    # igraph_error_t igraph_get_eids(const igraph_t *graph, igraph_vector_int_t *eids, const igraph_vector_int_t *pairs, igraph_bool_t directed, igraph_bool_t error);
+    attach_function :igraph_get_eids, %i[pointer pointer pointer bool bool], :int
+
+    # igraph_error_t igraph_get_all_eids_between(const igraph_t *graph, igraph_vector_int_t *eids, igraph_integer_t from, igraph_integer_t to, igraph_bool_t directed);
+    attach_function :igraph_get_all_eids_between, %i[pointer pointer long_long long_long bool], :int
 
     # igraph_error_t igraph_incident(const igraph_t *graph, igraph_vector_int_t *eids, igraph_integer_t vid, igraph_neimode_t mode);
     attach_function :igraph_incident, %i[pointer pointer long_long int], :int

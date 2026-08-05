@@ -4,8 +4,8 @@ class GamesTest < Test::Unit::TestCase
   test "erdos renyi game gnp" do
     graph = IGraph::LibIGraph::Graph.new
 
-    # Create Erdős–Rényi random graph with 10 vertices, p=0.3, undirected, no loops
-    result = IGraph::LibIGraph.igraph_erdos_renyi_game_gnp(graph.pointer, 10, 0.3, false, false)
+    # Create Erdős–Rényi random graph with 10 vertices, p=0.3, undirected, simple (no loops/multi-edges), unlabeled
+    result = IGraph::LibIGraph.igraph_erdos_renyi_game_gnp(graph.pointer, 10, 0.3, false, 0, false)
     assert_equal IGraph::LibIGraph::IGRAPH_SUCCESS, result
 
     # Check vertex count
@@ -23,8 +23,8 @@ class GamesTest < Test::Unit::TestCase
   test "erdos renyi game gnm" do
     graph = IGraph::LibIGraph::Graph.new
 
-    # Create Erdős–Rényi random graph with 8 vertices, 12 edges, undirected, no loops
-    result = IGraph::LibIGraph.igraph_erdos_renyi_game_gnm(graph.pointer, 8, 12, false, false)
+    # Create Erdős–Rényi random graph with 8 vertices, 12 edges, undirected, simple (no loops/multi-edges), unlabeled
+    result = IGraph::LibIGraph.igraph_erdos_renyi_game_gnm(graph.pointer, 8, 12, false, 0, false)
     assert_equal IGraph::LibIGraph::IGRAPH_SUCCESS, result
 
     # Check vertex count

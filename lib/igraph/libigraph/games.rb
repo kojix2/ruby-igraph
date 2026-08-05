@@ -7,11 +7,11 @@ module IGraph
     # igraph_error_t igraph_barabasi_game(igraph_t *graph, igraph_integer_t n, igraph_real_t power, igraph_integer_t m, const igraph_vector_int_t *outseq, igraph_bool_t outpref, igraph_real_t A, igraph_bool_t directed, igraph_barabasi_algorithm_t algo, const igraph_t *start_from);
     attach_function :igraph_barabasi_game, %i[pointer long_long double long_long pointer bool double bool int pointer], :int
 
-    # igraph_error_t igraph_erdos_renyi_game_gnp(igraph_t *graph, igraph_integer_t n, igraph_real_t p, igraph_bool_t directed, igraph_bool_t loops);
-    attach_function :igraph_erdos_renyi_game_gnp, %i[pointer long_long double bool bool], :int
+    # igraph_error_t igraph_erdos_renyi_game_gnp(igraph_t *graph, igraph_integer_t n, igraph_real_t p, igraph_bool_t directed, igraph_edge_type_sw_t allowed_edge_types, igraph_bool_t edge_labeled);
+    attach_function :igraph_erdos_renyi_game_gnp, %i[pointer long_long double bool int bool], :int
 
-    # igraph_error_t igraph_erdos_renyi_game_gnm(igraph_t *graph, igraph_integer_t n, igraph_integer_t m, igraph_bool_t directed, igraph_bool_t loops);
-    attach_function :igraph_erdos_renyi_game_gnm, %i[pointer long_long long_long bool bool], :int
+    # igraph_error_t igraph_erdos_renyi_game_gnm(igraph_t *graph, igraph_integer_t n, igraph_integer_t m, igraph_bool_t directed, igraph_edge_type_sw_t allowed_edge_types, igraph_bool_t edge_labeled);
+    attach_function :igraph_erdos_renyi_game_gnm, %i[pointer long_long long_long bool int bool], :int
 
     # igraph_error_t igraph_iea_game(igraph_t *graph, igraph_integer_t n, igraph_real_t p, igraph_real_t q, igraph_integer_t m, igraph_bool_t directed);
     attach_function :igraph_iea_game, %i[pointer long_long double double long_long bool], :int

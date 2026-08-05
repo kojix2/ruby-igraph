@@ -7,8 +7,7 @@ class CentralityTest < Test::Unit::TestCase
     assert_respond_to IGraph::LibIGraph, :igraph_closeness
     assert_respond_to IGraph::LibIGraph, :igraph_eigenvector_centrality
     assert_respond_to IGraph::LibIGraph, :igraph_harmonic_centrality
-    assert_respond_to IGraph::LibIGraph, :igraph_hub_score
-    assert_respond_to IGraph::LibIGraph, :igraph_authority_score
+    assert_respond_to IGraph::LibIGraph, :igraph_hub_and_authority_scores
   end
 
   def test_pagerank_available

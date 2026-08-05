@@ -49,12 +49,6 @@ module IGraph
     # igraph_error_t igraph_harmonic_centrality_cutoff(const igraph_t *graph, igraph_vector_t *res, const igraph_vs_t vids, igraph_neimode_t mode, const igraph_vector_t *weights, igraph_bool_t normalized, igraph_real_t cutoff);
     attach_function :igraph_harmonic_centrality_cutoff, %i[pointer pointer pointer int pointer bool double], :int
 
-    # igraph_error_t igraph_hub_score(const igraph_t *graph, igraph_vector_t *vector, igraph_real_t *value, igraph_bool_t scale, const igraph_vector_t *weights, igraph_arpack_options_t *options);
-    attach_function :igraph_hub_score, %i[pointer pointer pointer bool pointer pointer], :int
-
-    # igraph_error_t igraph_authority_score(const igraph_t *graph, igraph_vector_t *vector, igraph_real_t *value, igraph_bool_t scale, const igraph_vector_t *weights, igraph_arpack_options_t *options);
-    attach_function :igraph_authority_score, %i[pointer pointer pointer bool pointer pointer], :int
-
     # igraph_error_t igraph_constraint(const igraph_t *graph, igraph_vector_t *res, const igraph_vs_t vids, const igraph_vector_t *weights);
     attach_function :igraph_constraint, %i[pointer pointer pointer pointer], :int
 

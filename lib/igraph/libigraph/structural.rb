@@ -13,8 +13,8 @@ module IGraph
     # igraph_error_t igraph_count_multiple_1(const igraph_t *graph, igraph_integer_t *res, igraph_integer_t eid);
     attach_function :igraph_count_multiple_1, %i[pointer pointer long_long], :int
 
-    # igraph_error_t igraph_density(const igraph_t *graph, igraph_real_t *res, igraph_bool_t loops);
-    attach_function :igraph_density, %i[pointer pointer bool], :int
+    # igraph_error_t igraph_density(const igraph_t *graph, const igraph_vector_t *weights, igraph_real_t *res, igraph_bool_t loops);
+    attach_function :igraph_density, %i[pointer pointer pointer bool], :int
 
     # igraph_error_t igraph_diversity(const igraph_t *graph, const igraph_vector_t *weights, igraph_vector_t *res, const igraph_vs_t vids);
     attach_function :igraph_diversity, %i[pointer pointer pointer pointer], :int

@@ -116,7 +116,7 @@ class StructuralTest < Test::Unit::TestCase
 
     # Calculate density (should be 1.0 for complete graph)
     density = FFI::MemoryPointer.new(:double)
-    result = IGraph::LibIGraph.igraph_density(graph.pointer, density, false)
+    result = IGraph::LibIGraph.igraph_density(graph.pointer, nil, density, false)
     assert_equal IGraph::LibIGraph::IGRAPH_SUCCESS, result
     assert_equal 1.0, density.read_double
 

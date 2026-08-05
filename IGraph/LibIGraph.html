@@ -5492,7 +5492,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'><p>igraph_error_t igraph_erdos_renyi_game_gnm(igraph_t *graph, igraph_integer_t n, igraph_integer_t m, igraph_bool_t directed, igraph_bool_t loops);.</p></div></span>
+    <span class="summary_desc"><div class='inline'><p>igraph_error_t igraph_erdos_renyi_game_gnm(igraph_t *graph, igraph_integer_t n, igraph_integer_t m, igraph_bool_t directed, igraph_edge_type_sw_t allowed_edge_types, igraph_bool_t edge_labeled);.</p></div></span>
   
 </li>
 
@@ -5514,7 +5514,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'><p>igraph_error_t igraph_erdos_renyi_game_gnp(igraph_t *graph, igraph_integer_t n, igraph_real_t p, igraph_bool_t directed, igraph_bool_t loops);.</p></div></span>
+    <span class="summary_desc"><div class='inline'><p>igraph_error_t igraph_erdos_renyi_game_gnp(igraph_t *graph, igraph_integer_t n, igraph_real_t p, igraph_bool_t directed, igraph_edge_type_sw_t allowed_edge_types, igraph_bool_t edge_labeled);.</p></div></span>
   
 </li>
 
@@ -27643,7 +27643,7 @@ igraph_error_t igraph_cattribute_VAN(const igraph_t *graph, const char *name, ig
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>igraph_error_t igraph_erdos_renyi_game_gnm(igraph_t *graph, igraph_integer_t n, igraph_integer_t m, igraph_bool_t directed, igraph_bool_t loops);</p>
+    <p>igraph_error_t igraph_erdos_renyi_game_gnm(igraph_t *graph, igraph_integer_t n, igraph_integer_t m, igraph_bool_t directed, igraph_edge_type_sw_t allowed_edge_types, igraph_bool_t edge_labeled);</p>
 
   </div>
 </div>
@@ -27677,7 +27677,7 @@ igraph_error_t igraph_cattribute_VAN(const igraph_t *graph, const char *name, ig
     <td>
       <pre class="code"><span class="info file"># File 'lib/igraph/libigraph/games.rb', line 14</span>
 
-<span class='id identifier rubyid_attach_function'>attach_function</span> <span class='symbol'>:igraph_erdos_renyi_game_gnm</span><span class='comma'>,</span> <span class='qsymbols_beg'>%i[</span><span class='tstring_content'>pointer</span><span class='words_sep'> </span><span class='tstring_content'>long_long</span><span class='words_sep'> </span><span class='tstring_content'>long_long</span><span class='words_sep'> </span><span class='tstring_content'>bool</span><span class='words_sep'> </span><span class='tstring_content'>bool</span><span class='tstring_end'>]</span></span><span class='comma'>,</span> <span class='symbol'>:int</span></pre>
+<span class='id identifier rubyid_attach_function'>attach_function</span> <span class='symbol'>:igraph_erdos_renyi_game_gnm</span><span class='comma'>,</span> <span class='qsymbols_beg'>%i[</span><span class='tstring_content'>pointer</span><span class='words_sep'> </span><span class='tstring_content'>long_long</span><span class='words_sep'> </span><span class='tstring_content'>long_long</span><span class='words_sep'> </span><span class='tstring_content'>bool</span><span class='words_sep'> </span><span class='tstring_content'>int</span><span class='words_sep'> </span><span class='tstring_content'>bool</span><span class='tstring_end'>]</span></span><span class='comma'>,</span> <span class='symbol'>:int</span></pre>
     </td>
   </tr>
 </table>
@@ -27694,7 +27694,7 @@ igraph_error_t igraph_cattribute_VAN(const igraph_t *graph, const char *name, ig
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>igraph_error_t igraph_erdos_renyi_game_gnp(igraph_t *graph, igraph_integer_t n, igraph_real_t p, igraph_bool_t directed, igraph_bool_t loops);</p>
+    <p>igraph_error_t igraph_erdos_renyi_game_gnp(igraph_t *graph, igraph_integer_t n, igraph_real_t p, igraph_bool_t directed, igraph_edge_type_sw_t allowed_edge_types, igraph_bool_t edge_labeled);</p>
 
   </div>
 </div>
@@ -27728,7 +27728,7 @@ igraph_error_t igraph_cattribute_VAN(const igraph_t *graph, const char *name, ig
     <td>
       <pre class="code"><span class="info file"># File 'lib/igraph/libigraph/games.rb', line 11</span>
 
-<span class='id identifier rubyid_attach_function'>attach_function</span> <span class='symbol'>:igraph_erdos_renyi_game_gnp</span><span class='comma'>,</span> <span class='qsymbols_beg'>%i[</span><span class='tstring_content'>pointer</span><span class='words_sep'> </span><span class='tstring_content'>long_long</span><span class='words_sep'> </span><span class='tstring_content'>double</span><span class='words_sep'> </span><span class='tstring_content'>bool</span><span class='words_sep'> </span><span class='tstring_content'>bool</span><span class='tstring_end'>]</span></span><span class='comma'>,</span> <span class='symbol'>:int</span></pre>
+<span class='id identifier rubyid_attach_function'>attach_function</span> <span class='symbol'>:igraph_erdos_renyi_game_gnp</span><span class='comma'>,</span> <span class='qsymbols_beg'>%i[</span><span class='tstring_content'>pointer</span><span class='words_sep'> </span><span class='tstring_content'>long_long</span><span class='words_sep'> </span><span class='tstring_content'>double</span><span class='words_sep'> </span><span class='tstring_content'>bool</span><span class='words_sep'> </span><span class='tstring_content'>int</span><span class='words_sep'> </span><span class='tstring_content'>bool</span><span class='tstring_end'>]</span></span><span class='comma'>,</span> <span class='symbol'>:int</span></pre>
     </td>
   </tr>
 </table>
@@ -53038,7 +53038,7 @@ igraph_error_t igraph_write_graph_edgelist(const igraph_t *graph, FILE *outstrea
 </div>
 
       <div id="footer">
-  Generated on Mon Aug  3 14:20:08 2026 by
+  Generated on Wed Aug  5 09:23:33 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.45 (ruby-4.0.6).
 </div>

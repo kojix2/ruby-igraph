@@ -49,4 +49,18 @@ module IGraph
                   end
 
   autoload :LibIGraph, "igraph/libigraph"
+
+  # High-level API (Layer 2)
+  autoload :Graph,            "igraph/graph"
+  autoload :Vector,           "igraph/vector"
+  autoload :Matrix,           "igraph/matrix"
+  autoload :VertexSelector,   "igraph/vertex_selector"
+  autoload :EdgeSelector,     "igraph/edge_selector"
+  autoload :CommunityResult,  "igraph/community_result"
+  autoload :IO,               "igraph/io"
 end
+
+require_relative "igraph/error"
+
+# Register C error handler (after LibIGraph is loaded)
+IGraph.setup_error_handler

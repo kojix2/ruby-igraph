@@ -15,7 +15,7 @@ module IGraph
     def self.attach_function(*)
       super
     rescue FFI::NotFoundError => e
-      warn e.message if $VERBOSE
+      warn e.message if $DEBUG
     end
 
     # IGRAPH_EXPORT void IGraphconst char **version_string,
@@ -44,7 +44,6 @@ require_relative "libigraph/structural"
 require_relative "libigraph/paths"
 require_relative "libigraph/centrality"
 require_relative "libigraph/bipartite"
-require_relative "libigraph/topology"
 require_relative "libigraph/operators"
 require_relative "libigraph/transitivity"
 require_relative "libigraph/adjlist"

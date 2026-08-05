@@ -61,9 +61,6 @@ module IGraph
     # igraph_error_t igraph_mycielskian(const igraph_t *graph, igraph_t *res);
     attach_function :igraph_mycielskian, %i[pointer pointer], :int
 
-    # igraph_error_t igraph_permute_vertices(igraph_t *graph, const igraph_t *res, const igraph_vector_int_t *permutation);
-    attach_function :igraph_permute_vertices, %i[pointer pointer pointer], :int
-
     # igraph_error_t igraph_product(const igraph_t *graph1, const igraph_t *graph2, igraph_t *res, igraph_product_t type);
     attach_function :igraph_product, %i[pointer pointer pointer int], :int
 

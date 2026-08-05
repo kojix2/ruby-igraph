@@ -8,9 +8,6 @@ module IGraph
     # igraph_error_t igraph_random_sample(igraph_vector_int_t *res, igraph_int_t l, igraph_int_t h, igraph_int_t length);
     attach_function :igraph_random_sample, %i[pointer long_long long_long long_long], :int
 
-    # igraph_error_t igraph_random_walk(const igraph_t *graph, igraph_vector_int_t *walk, igraph_int_t start, igraph_neimode_t mode, igraph_int_t steps, igraph_random_walk_stuck_t stuck);
-    attach_function :igraph_random_walk, %i[pointer pointer long_long int long_long int], :int
-
     # igraph_error_t igraph_rng_get_integer(igraph_rng_t *rng, igraph_int_t lo, igraph_int_t hi, igraph_int_t *result);
     attach_function :igraph_rng_get_integer, %i[pointer long_long long_long pointer], :int
 

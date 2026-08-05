@@ -19,14 +19,8 @@ module IGraph
     # igraph_error_t igraph_diversity(const igraph_t *graph, const igraph_vector_t *weights, igraph_vector_t *res, const igraph_vs_t vids);
     attach_function :igraph_diversity, %i[pointer pointer pointer pointer], :int
 
-    # igraph_error_t igraph_girth(const igraph_t *graph, igraph_real_t *girth, igraph_vector_int_t *circle);
-    attach_function :igraph_girth, %i[pointer pointer pointer], :int
-
     # igraph_error_t igraph_has_loop(const igraph_t *graph, igraph_bool_t *res);
     attach_function :igraph_has_loop, %i[pointer pointer], :int
-
-    # igraph_error_t igraph_has_multiple(const igraph_t *graph, igraph_bool_t *res);
-    attach_function :igraph_has_multiple, %i[pointer pointer], :int
 
     # igraph_error_t igraph_count_loops(const igraph_t *graph, igraph_integer_t *loop_count);
     attach_function :igraph_count_loops, %i[pointer pointer], :int
@@ -48,9 +42,6 @@ module IGraph
 
     # igraph_error_t igraph_is_tree(const igraph_t *graph, igraph_bool_t *res, igraph_integer_t *root, igraph_neimode_t mode);
     attach_function :igraph_is_tree, %i[pointer pointer pointer int], :int
-
-    # igraph_error_t igraph_is_acyclic(const igraph_t *graph, igraph_bool_t *res);
-    attach_function :igraph_is_acyclic, %i[pointer pointer], :int
 
     # igraph_error_t igraph_is_forest(const igraph_t *graph, igraph_bool_t *res, igraph_vector_int_t *roots, igraph_neimode_t mode);
     attach_function :igraph_is_forest, %i[pointer pointer pointer int], :int
@@ -114,8 +105,5 @@ module IGraph
 
     # igraph_error_t igraph_get_laplacian_sparse(const igraph_t *graph, igraph_sparsemat_t *sparsemat, igraph_laplacian_normalization_t mode, const igraph_vector_t *weights);
     attach_function :igraph_get_laplacian_sparse, %i[pointer pointer int pointer], :int
-
-    # igraph_error_t igraph_is_connected(const igraph_t *graph, igraph_bool_t *res, igraph_connectedness_t mode);
-    attach_function :igraph_is_connected, %i[pointer pointer int], :int
   end
 end

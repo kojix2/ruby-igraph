@@ -30,5 +30,11 @@ module IGraph
 
     # igraph_error_t igraph_error(const char *reason, const char *file, int line, igraph_error_t igraph_errno);
     attach_function :igraph_error, %i[string string int int], :int
+
+    # Error handler callback type: void (*igraph_error_handler_t)(const char*, const char*, int, igraph_error_t)
+    callback :igraph_error_handler_func, %i[string string int int], :void
+
+    # igraph_error_handler_t *igraph_set_error_handler(igraph_error_handler_t* new_handler);
+    attach_function :igraph_set_error_handler, [:igraph_error_handler_func], :pointer
   end
 end

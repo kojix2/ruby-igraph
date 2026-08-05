@@ -18,6 +18,15 @@ module IGraph
         :data, [:uint8, 16]             # Union data (16 bytes)
       )
     end
+
+    # igraph_es_t structure for edge selectors (same layout as igraph_vs_t)
+    class EdgeSelector < FFI::Struct
+      layout(
+        :type, :int,                    # igraph_es_type_t (4 bytes)
+        :padding, [:uint8, 4],          # Padding to align to 8-byte boundary
+        :data, [:uint8, 16]             # Union data (16 bytes)
+      )
+    end
     # igraph_error_t igraph_empty(igraph_t *graph, igraph_integer_t n, igraph_bool_t directed);
     attach_function :igraph_empty, %i[pointer long_long bool], :int
 
@@ -64,10 +73,13 @@ module IGraph
     attach_function :igraph_degree_1, %i[pointer pointer long_long int bool], :int
 
     # igraph_error_t igraph_delete_edges(igraph_t *graph, igraph_es_t edges);
-    attach_function :igraph_delete_edges, %i[pointer int], :int
+    attach_function :igraph_delete_edges, [:pointer, EdgeSelector.by_value], :int
 
     # igraph_error_t igraph_delete_vertices(igraph_t *graph, const igraph_vs_t vertices);
     attach_function :igraph_delete_vertices, [:pointer, VertexSelector.by_value], :int
+
+    # Note: igraph_es_all is defined in iterators.rb (2-arg version)
+    # Note: igraph_es_destroy is defined in iterators.rb
 
     # igraph_error_t igraph_delete_vertices_idx(igraph_t *graph, const igraph_vs_t vertices, igraph_vector_int_t *idx, igraph_vector_int_t *invidx);
     attach_function :igraph_delete_vertices_idx, %i[pointer pointer pointer pointer], :int

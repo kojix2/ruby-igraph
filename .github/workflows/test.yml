@@ -36,12 +36,14 @@ jobs:
           sudo ldconfig
       - name: Install igraph (Windows)
         if: ${{ matrix.os == 'windows' }}
+        shell: pwsh
         run: |
           ridk exec pacman -Syu --noconfirm
-          ridk exec pacman -S --noconfirm mingw-w64-ucrt-x86_64-cmake mingw-w64-ucrt-x86_64-gcc mingw-w64-ucrt-x86_64-libxml2 mingw-w64-ucrt-x86_64-gmp mingw-w64-ucrt-x86_64-openblas mingw-w64-ucrt-x86_64-glpk mingw-w64-ucrt-x86_64-ninja flex
+          ridk exec pacman -S --noconfirm mingw-w64-ucrt-x86_64-cmake mingw-w64-ucrt-x86_64-gcc mingw-w64-ucrt-x86_64-libxml2 mingw-w64-ucrt-x86_64-gmp mingw-w64-ucrt-x86_64-openblas mingw-w64-ucrt-x86_64-glpk mingw-w64-ucrt-x86_64-ninja
+          choco install winflexbison3 --no-progress --yes
           cd igraph
           $cmake = Join-Path $env:RI_DEVKIT "ucrt64\bin\cmake.exe"
-          $flex = Join-Path $env:RI_DEVKIT "usr\bin\flex.exe"
+          $flex = (Get-Command win_flex.exe).Source
           $ninja = Join-Path $env:RI_DEVKIT "ucrt64\bin\ninja.exe"
           $cc = Join-Path $env:RI_DEVKIT "ucrt64\bin\gcc.exe"
           $cxx = Join-Path $env:RI_DEVKIT "ucrt64\bin\g++.exe"

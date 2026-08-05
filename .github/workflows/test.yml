@@ -38,7 +38,12 @@ jobs:
         if: ${{ matrix.os == 'windows' }}
         run: |
           ridk exec pacman -Syu --noconfirm
-          ridk exec pacman -S --noconfirm mingw-w64-x86_64-igraph
+          ridk exec pacman -S --noconfirm mingw-w64-x86_64-cmake mingw-w64-x86_64-gcc mingw-w64-x86_64-libxml2 mingw-w64-x86_64-gmp mingw-w64-x86_64-openblas mingw-w64-x86_64-glpk
+          cd igraph
+          ridk exec cmake -S . -B build -DBUILD_SHARED_LIBS=ON -DIGRAPH_ENABLE_LTO=OFF -DIGRAPH_OPENMP_SUPPORT=ON -DIGRAPH_GRAPHML_SUPPORT=ON -DIGRAPH_GLPK_SUPPORT=ON -DIGRAPH_ENABLE_TLS=ON
+          ridk exec cmake --build build --config Release
       - name: Build and test with Rake
         run: |
           bundle exec rake
+        env:
+          IGRAPHDIR: ${{ github.workspace }}\igraph\build\src

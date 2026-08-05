@@ -40,7 +40,9 @@ module IGraph
     end
   end
 
-  self.lib_path = if Object.const_defined?(:RubyInstaller)
+  self.lib_path = if ENV["IGRAPHDIR"]
+                    search_igraph
+                  elsif Object.const_defined?(:RubyInstaller)
                     search_igraph_windows
                   else
                     search_igraph

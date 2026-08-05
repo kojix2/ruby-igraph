@@ -1430,28 +1430,6 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#igraph_authority_score-class_method" title="igraph_authority_score (class method)">.<strong>igraph_authority_score</strong>(pointer)  &#x21d2; int </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>igraph_error_t igraph_authority_score(const igraph_t *graph, igraph_vector_t *vector, igraph_real_t *value, igraph_bool_t scale, const igraph_vector_t *weights, igraph_arpack_options_t *options);.</p></div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
       <a href="#igraph_automorphism_group-class_method" title="igraph_automorphism_group (class method)">.<strong>igraph_automorphism_group</strong>(pointer)  &#x21d2; int </a>
     
 
@@ -4656,7 +4634,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'><p>igraph_error_t igraph_density(const igraph_t *graph, igraph_real_t *res, igraph_bool_t loops);.</p></div></span>
+    <span class="summary_desc"><div class='inline'><p>igraph_error_t igraph_density(const igraph_t *graph, const igraph_vector_t *weights, igraph_real_t *res, igraph_bool_t loops);.</p></div></span>
   
 </li>
 
@@ -7473,28 +7451,6 @@
 
   
     <span class="summary_desc"><div class='inline'><p>igraph_error_t igraph_hub_and_authority_scores(const igraph_t *graph, igraph_vector_t *hub_vector, igraph_vector_t *authority_vector, igraph_real_t *value, igraph_bool_t scale, const igraph_vector_t *weights, igraph_arpack_options_t *options);.</p></div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#igraph_hub_score-class_method" title="igraph_hub_score (class method)">.<strong>igraph_hub_score</strong>(pointer)  &#x21d2; int </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>igraph_error_t igraph_hub_score(const igraph_t *graph, igraph_vector_t *vector, igraph_real_t *value, igraph_bool_t scale, const igraph_vector_t *weights, igraph_arpack_options_t *options);.</p></div></span>
   
 </li>
 
@@ -18453,57 +18409,6 @@ igraph_error_t igraph_adjacent_vertices(const igraph_t *graph, igraph_vs_t *vids
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="igraph_authority_score-class_method">
-  
-    .<strong>igraph_authority_score</strong>(pointer)  &#x21d2; <tt>int</tt> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    <p>igraph_error_t igraph_authority_score(const igraph_t *graph, igraph_vector_t *vector, igraph_real_t *value, igraph_bool_t scale, const igraph_vector_t *weights, igraph_arpack_options_t *options);</p>
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>int</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>the return value of attach_function</p></div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-56</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/igraph/libigraph/centrality.rb', line 56</span>
-
-<span class='id identifier rubyid_attach_function'>attach_function</span> <span class='symbol'>:igraph_authority_score</span><span class='comma'>,</span> <span class='qsymbols_beg'>%i[</span><span class='tstring_content'>pointer</span><span class='words_sep'> </span><span class='tstring_content'>pointer</span><span class='words_sep'> </span><span class='tstring_content'>pointer</span><span class='words_sep'> </span><span class='tstring_content'>bool</span><span class='words_sep'> </span><span class='tstring_content'>pointer</span><span class='words_sep'> </span><span class='tstring_content'>pointer</span><span class='tstring_end'>]</span></span><span class='comma'>,</span> <span class='symbol'>:int</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
   <h3 class="signature " id="igraph_automorphism_group-class_method">
   
     .<strong>igraph_automorphism_group</strong>(pointer)  &#x21d2; <tt>int</tt> 
@@ -22263,10 +22168,10 @@ igraph_error_t igraph_cattribute_VAN(const igraph_t *graph, const char *name, ig
       <pre class="lines">
 
 
-65</pre>
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/igraph/libigraph/centrality.rb', line 65</span>
+      <pre class="code"><span class="info file"># File 'lib/igraph/libigraph/centrality.rb', line 59</span>
 
 <span class='id identifier rubyid_attach_function'>attach_function</span> <span class='symbol'>:igraph_centralization</span><span class='comma'>,</span> <span class='qsymbols_beg'>%i[</span><span class='tstring_content'>pointer</span><span class='words_sep'> </span><span class='tstring_content'>double</span><span class='words_sep'> </span><span class='tstring_content'>bool</span><span class='tstring_end'>]</span></span><span class='comma'>,</span> <span class='symbol'>:double</span></pre>
     </td>
@@ -22314,10 +22219,10 @@ igraph_error_t igraph_cattribute_VAN(const igraph_t *graph, const char *name, ig
       <pre class="lines">
 
 
-74</pre>
+68</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/igraph/libigraph/centrality.rb', line 74</span>
+      <pre class="code"><span class="info file"># File 'lib/igraph/libigraph/centrality.rb', line 68</span>
 
 <span class='id identifier rubyid_attach_function'>attach_function</span> <span class='symbol'>:igraph_centralization_betweenness</span><span class='comma'>,</span> <span class='qsymbols_beg'>%i[</span><span class='tstring_content'>pointer</span><span class='words_sep'> </span><span class='tstring_content'>pointer</span><span class='words_sep'> </span><span class='tstring_content'>bool</span><span class='words_sep'> </span><span class='tstring_content'>bool</span><span class='words_sep'> </span><span class='tstring_content'>pointer</span><span class='words_sep'> </span><span class='tstring_content'>pointer</span><span class='tstring_end'>]</span></span><span class='comma'>,</span> <span class='symbol'>:int</span></pre>
     </td>
@@ -22365,10 +22270,10 @@ igraph_error_t igraph_cattribute_VAN(const igraph_t *graph, const char *name, ig
       <pre class="lines">
 
 
-77</pre>
+71</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/igraph/libigraph/centrality.rb', line 77</span>
+      <pre class="code"><span class="info file"># File 'lib/igraph/libigraph/centrality.rb', line 71</span>
 
 <span class='id identifier rubyid_attach_function'>attach_function</span> <span class='symbol'>:igraph_centralization_betweenness_tmax</span><span class='comma'>,</span> <span class='qsymbols_beg'>%i[</span><span class='tstring_content'>pointer</span><span class='words_sep'> </span><span class='tstring_content'>long_long</span><span class='words_sep'> </span><span class='tstring_content'>bool</span><span class='words_sep'> </span><span class='tstring_content'>pointer</span><span class='tstring_end'>]</span></span><span class='comma'>,</span> <span class='symbol'>:int</span></pre>
     </td>
@@ -22416,10 +22321,10 @@ igraph_error_t igraph_cattribute_VAN(const igraph_t *graph, const char *name, ig
       <pre class="lines">
 
 
-80</pre>
+74</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/igraph/libigraph/centrality.rb', line 80</span>
+      <pre class="code"><span class="info file"># File 'lib/igraph/libigraph/centrality.rb', line 74</span>
 
 <span class='id identifier rubyid_attach_function'>attach_function</span> <span class='symbol'>:igraph_centralization_closeness</span><span class='comma'>,</span> <span class='qsymbols_beg'>%i[</span><span class='tstring_content'>pointer</span><span class='words_sep'> </span><span class='tstring_content'>pointer</span><span class='words_sep'> </span><span class='tstring_content'>int</span><span class='words_sep'> </span><span class='tstring_content'>bool</span><span class='words_sep'> </span><span class='tstring_content'>pointer</span><span class='words_sep'> </span><span class='tstring_content'>pointer</span><span class='tstring_end'>]</span></span><span class='comma'>,</span> <span class='symbol'>:int</span></pre>
     </td>
@@ -22467,10 +22372,10 @@ igraph_error_t igraph_cattribute_VAN(const igraph_t *graph, const char *name, ig
       <pre class="lines">
 
 
-83</pre>
+77</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/igraph/libigraph/centrality.rb', line 83</span>
+      <pre class="code"><span class="info file"># File 'lib/igraph/libigraph/centrality.rb', line 77</span>
 
 <span class='id identifier rubyid_attach_function'>attach_function</span> <span class='symbol'>:igraph_centralization_closeness_tmax</span><span class='comma'>,</span> <span class='qsymbols_beg'>%i[</span><span class='tstring_content'>pointer</span><span class='words_sep'> </span><span class='tstring_content'>long_long</span><span class='words_sep'> </span><span class='tstring_content'>int</span><span class='words_sep'> </span><span class='tstring_content'>pointer</span><span class='tstring_end'>]</span></span><span class='comma'>,</span> <span class='symbol'>:int</span></pre>
     </td>
@@ -22518,10 +22423,10 @@ igraph_error_t igraph_cattribute_VAN(const igraph_t *graph, const char *name, ig
       <pre class="lines">
 
 
-68</pre>
+62</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/igraph/libigraph/centrality.rb', line 68</span>
+      <pre class="code"><span class="info file"># File 'lib/igraph/libigraph/centrality.rb', line 62</span>
 
 <span class='id identifier rubyid_attach_function'>attach_function</span> <span class='symbol'>:igraph_centralization_degree</span><span class='comma'>,</span> <span class='qsymbols_beg'>%i[</span><span class='tstring_content'>pointer</span><span class='words_sep'> </span><span class='tstring_content'>pointer</span><span class='words_sep'> </span><span class='tstring_content'>int</span><span class='words_sep'> </span><span class='tstring_content'>bool</span><span class='words_sep'> </span><span class='tstring_content'>pointer</span><span class='words_sep'> </span><span class='tstring_content'>pointer</span><span class='words_sep'> </span><span class='tstring_content'>bool</span><span class='tstring_end'>]</span></span><span class='comma'>,</span> <span class='symbol'>:int</span></pre>
     </td>
@@ -22569,10 +22474,10 @@ igraph_error_t igraph_cattribute_VAN(const igraph_t *graph, const char *name, ig
       <pre class="lines">
 
 
-71</pre>
+65</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/igraph/libigraph/centrality.rb', line 71</span>
+      <pre class="code"><span class="info file"># File 'lib/igraph/libigraph/centrality.rb', line 65</span>
 
 <span class='id identifier rubyid_attach_function'>attach_function</span> <span class='symbol'>:igraph_centralization_degree_tmax</span><span class='comma'>,</span> <span class='qsymbols_beg'>%i[</span><span class='tstring_content'>pointer</span><span class='words_sep'> </span><span class='tstring_content'>long_long</span><span class='words_sep'> </span><span class='tstring_content'>int</span><span class='words_sep'> </span><span class='tstring_content'>bool</span><span class='words_sep'> </span><span class='tstring_content'>pointer</span><span class='tstring_end'>]</span></span><span class='comma'>,</span> <span class='symbol'>:int</span></pre>
     </td>
@@ -22620,10 +22525,10 @@ igraph_error_t igraph_cattribute_VAN(const igraph_t *graph, const char *name, ig
       <pre class="lines">
 
 
-86</pre>
+80</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/igraph/libigraph/centrality.rb', line 86</span>
+      <pre class="code"><span class="info file"># File 'lib/igraph/libigraph/centrality.rb', line 80</span>
 
 <span class='id identifier rubyid_attach_function'>attach_function</span> <span class='symbol'>:igraph_centralization_eigenvector_centrality</span><span class='comma'>,</span> <span class='qsymbols_beg'>%i[</span><span class='tstring_content'>pointer</span><span class='words_sep'> </span><span class='tstring_content'>pointer</span><span class='words_sep'> </span><span class='tstring_content'>bool</span><span class='words_sep'> </span><span class='tstring_content'>bool</span><span class='words_sep'> </span><span class='tstring_content'>pointer</span><span class='words_sep'> </span><span class='tstring_content'>pointer</span><span class='words_sep'> </span><span class='tstring_content'>pointer</span><span class='tstring_end'>]</span></span><span class='comma'>,</span> <span class='symbol'>:int</span></pre>
     </td>
@@ -22671,10 +22576,10 @@ igraph_error_t igraph_cattribute_VAN(const igraph_t *graph, const char *name, ig
       <pre class="lines">
 
 
-89</pre>
+83</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/igraph/libigraph/centrality.rb', line 89</span>
+      <pre class="code"><span class="info file"># File 'lib/igraph/libigraph/centrality.rb', line 83</span>
 
 <span class='id identifier rubyid_attach_function'>attach_function</span> <span class='symbol'>:igraph_centralization_eigenvector_centrality_tmax</span><span class='comma'>,</span> <span class='qsymbols_beg'>%i[</span><span class='tstring_content'>pointer</span><span class='words_sep'> </span><span class='tstring_content'>long_long</span><span class='words_sep'> </span><span class='tstring_content'>bool</span><span class='words_sep'> </span><span class='tstring_content'>bool</span><span class='words_sep'> </span><span class='tstring_content'>pointer</span><span class='tstring_end'>]</span></span><span class='comma'>,</span> <span class='symbol'>:int</span></pre>
     </td>
@@ -24354,10 +24259,10 @@ igraph_error_t igraph_cattribute_VAN(const igraph_t *graph, const char *name, ig
       <pre class="lines">
 
 
-59</pre>
+53</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/igraph/libigraph/centrality.rb', line 59</span>
+      <pre class="code"><span class="info file"># File 'lib/igraph/libigraph/centrality.rb', line 53</span>
 
 <span class='id identifier rubyid_attach_function'>attach_function</span> <span class='symbol'>:igraph_constraint</span><span class='comma'>,</span> <span class='qsymbols_beg'>%i[</span><span class='tstring_content'>pointer</span><span class='words_sep'> </span><span class='tstring_content'>pointer</span><span class='words_sep'> </span><span class='tstring_content'>pointer</span><span class='words_sep'> </span><span class='tstring_content'>pointer</span><span class='tstring_end'>]</span></span><span class='comma'>,</span> <span class='symbol'>:int</span></pre>
     </td>
@@ -24456,10 +24361,10 @@ igraph_error_t igraph_cattribute_VAN(const igraph_t *graph, const char *name, ig
       <pre class="lines">
 
 
-62</pre>
+56</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/igraph/libigraph/centrality.rb', line 62</span>
+      <pre class="code"><span class="info file"># File 'lib/igraph/libigraph/centrality.rb', line 56</span>
 
 <span class='id identifier rubyid_attach_function'>attach_function</span> <span class='symbol'>:igraph_convergence_degree</span><span class='comma'>,</span> <span class='qsymbols_beg'>%i[</span><span class='tstring_content'>pointer</span><span class='words_sep'> </span><span class='tstring_content'>pointer</span><span class='words_sep'> </span><span class='tstring_content'>pointer</span><span class='words_sep'> </span><span class='tstring_content'>pointer</span><span class='tstring_end'>]</span></span><span class='comma'>,</span> <span class='symbol'>:int</span></pre>
     </td>
@@ -25737,7 +25642,7 @@ igraph_error_t igraph_cattribute_VAN(const igraph_t *graph, const char *name, ig
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>igraph_error_t igraph_density(const igraph_t *graph, igraph_real_t *res, igraph_bool_t loops);</p>
+    <p>igraph_error_t igraph_density(const igraph_t *graph, const igraph_vector_t *weights, igraph_real_t *res, igraph_bool_t loops);</p>
 
   </div>
 </div>
@@ -25771,7 +25676,7 @@ igraph_error_t igraph_cattribute_VAN(const igraph_t *graph, const char *name, ig
     <td>
       <pre class="code"><span class="info file"># File 'lib/igraph/libigraph/structural.rb', line 17</span>
 
-<span class='id identifier rubyid_attach_function'>attach_function</span> <span class='symbol'>:igraph_density</span><span class='comma'>,</span> <span class='qsymbols_beg'>%i[</span><span class='tstring_content'>pointer</span><span class='words_sep'> </span><span class='tstring_content'>pointer</span><span class='words_sep'> </span><span class='tstring_content'>bool</span><span class='tstring_end'>]</span></span><span class='comma'>,</span> <span class='symbol'>:int</span></pre>
+<span class='id identifier rubyid_attach_function'>attach_function</span> <span class='symbol'>:igraph_density</span><span class='comma'>,</span> <span class='qsymbols_beg'>%i[</span><span class='tstring_content'>pointer</span><span class='words_sep'> </span><span class='tstring_content'>pointer</span><span class='words_sep'> </span><span class='tstring_content'>pointer</span><span class='words_sep'> </span><span class='tstring_content'>bool</span><span class='tstring_end'>]</span></span><span class='comma'>,</span> <span class='symbol'>:int</span></pre>
     </td>
   </tr>
 </table>
@@ -32237,57 +32142,6 @@ igraph_error_t igraph_es_all(igraph_es_t *es, igraph_edgeorder_type_t order);</p
       <pre class="code"><span class="info file"># File 'lib/igraph/libigraph/centrality.rb', line 44</span>
 
 <span class='id identifier rubyid_attach_function'>attach_function</span> <span class='symbol'>:igraph_hub_and_authority_scores</span><span class='comma'>,</span> <span class='qsymbols_beg'>%i[</span><span class='tstring_content'>pointer</span><span class='words_sep'> </span><span class='tstring_content'>pointer</span><span class='words_sep'> </span><span class='tstring_content'>pointer</span><span class='words_sep'> </span><span class='tstring_content'>pointer</span><span class='words_sep'> </span><span class='tstring_content'>bool</span><span class='words_sep'> </span><span class='tstring_content'>pointer</span><span class='words_sep'> </span><span class='tstring_content'>pointer</span><span class='tstring_end'>]</span></span><span class='comma'>,</span> <span class='symbol'>:int</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="igraph_hub_score-class_method">
-  
-    .<strong>igraph_hub_score</strong>(pointer)  &#x21d2; <tt>int</tt> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    <p>igraph_error_t igraph_hub_score(const igraph_t *graph, igraph_vector_t *vector, igraph_real_t *value, igraph_bool_t scale, const igraph_vector_t *weights, igraph_arpack_options_t *options);</p>
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>int</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>the return value of attach_function</p></div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-53</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/igraph/libigraph/centrality.rb', line 53</span>
-
-<span class='id identifier rubyid_attach_function'>attach_function</span> <span class='symbol'>:igraph_hub_score</span><span class='comma'>,</span> <span class='qsymbols_beg'>%i[</span><span class='tstring_content'>pointer</span><span class='words_sep'> </span><span class='tstring_content'>pointer</span><span class='words_sep'> </span><span class='tstring_content'>pointer</span><span class='words_sep'> </span><span class='tstring_content'>bool</span><span class='words_sep'> </span><span class='tstring_content'>pointer</span><span class='words_sep'> </span><span class='tstring_content'>pointer</span><span class='tstring_end'>]</span></span><span class='comma'>,</span> <span class='symbol'>:int</span></pre>
     </td>
   </tr>
 </table>
@@ -53038,7 +52892,7 @@ igraph_error_t igraph_write_graph_edgelist(const igraph_t *graph, FILE *outstrea
 </div>
 
       <div id="footer">
-  Generated on Wed Aug  5 09:23:33 2026 by
+  Generated on Wed Aug  5 09:47:15 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.45 (ruby-4.0.6).
 </div>

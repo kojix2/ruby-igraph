@@ -40,8 +40,13 @@ jobs:
           ridk exec pacman -Syu --noconfirm
           ridk exec pacman -S --noconfirm mingw-w64-ucrt-x86_64-cmake mingw-w64-ucrt-x86_64-gcc mingw-w64-ucrt-x86_64-libxml2 mingw-w64-ucrt-x86_64-gmp mingw-w64-ucrt-x86_64-openblas mingw-w64-ucrt-x86_64-glpk mingw-w64-ucrt-x86_64-ninja flex
           cd igraph
-          ridk exec bash -c '/ucrt64/bin/cmake -S . -B build -G Ninja -DFLEX_EXECUTABLE="$(cygpath -w /usr/bin/flex.exe)" -DBUILD_SHARED_LIBS=ON -DIGRAPH_ENABLE_LTO=OFF -DIGRAPH_OPENMP_SUPPORT=ON -DIGRAPH_GRAPHML_SUPPORT=ON -DIGRAPH_GLPK_SUPPORT=ON -DIGRAPH_ENABLE_TLS=ON'
-          ridk exec bash -c '/ucrt64/bin/cmake --build build'
+          $cmake = Join-Path $env:RI_DEVKIT "ucrt64\bin\cmake.exe"
+          $flex = Join-Path $env:RI_DEVKIT "usr\bin\flex.exe"
+          $ninja = Join-Path $env:RI_DEVKIT "ucrt64\bin\ninja.exe"
+          $cc = Join-Path $env:RI_DEVKIT "ucrt64\bin\gcc.exe"
+          $cxx = Join-Path $env:RI_DEVKIT "ucrt64\bin\g++.exe"
+          & $cmake -S . -B build -G Ninja "-DCMAKE_MAKE_PROGRAM=$ninja" "-DCMAKE_C_COMPILER=$cc" "-DCMAKE_CXX_COMPILER=$cxx" "-DFLEX_EXECUTABLE=$flex" -DBUILD_SHARED_LIBS=ON -DIGRAPH_ENABLE_LTO=OFF -DIGRAPH_OPENMP_SUPPORT=ON -DIGRAPH_GRAPHML_SUPPORT=ON -DIGRAPH_GLPK_SUPPORT=ON -DIGRAPH_ENABLE_TLS=ON
+          & $cmake --build build
       - name: Build and test with Rake
         run: |
           bundle exec rake

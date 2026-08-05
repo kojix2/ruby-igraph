@@ -1,0 +1,2396 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: IGraph::Graph
+  
+    &mdash; Documentation by YARD 0.9.45
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css">
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css">
+
+<script type="text/javascript">
+  pathId = "IGraph::Graph";
+  relpath = '../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="main_progress" aria-hidden="true"></div>
+
+    <div class="nav_wrap">
+      <iframe id="nav" src="../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../_index.html">Index (G)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../IGraph.html" title="IGraph (module)">IGraph</a></span></span>
+     &raquo; 
+    <span class="title">Graph</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Class: IGraph::Graph
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">IGraph::Graph</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>lib/igraph/graph.rb
+</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>High-level graph class</p>
+<p>Holds an igraph_t internally and automatically calls igraph_destroy
+via GC finalizer. This is the central class for all high-level graph operations.</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h4 class="tag_title">Examples:</h4>
+    
+      
+      <pre class="example code"><code><span class='id identifier rubyid_g'>g</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../IGraph.html" title="IGraph (module)">IGraph</a></span></span><span class='op'>::</span><span class='const'>Graph</span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="#initialize-instance_method" title="IGraph::Graph#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='label'>edges:</span> <span class='lbracket'>[</span><span class='lbracket'>[</span><span class='int'>0</span><span class='comma'>,</span> <span class='int'>1</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='int'>1</span><span class='comma'>,</span> <span class='int'>2</span><span class='rbracket'>]</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='label'>directed:</span> <span class='kw'>false</span><span class='rparen'>)</span>
+<span class='id identifier rubyid_g'>g</span><span class='period'>.</span><span class='id identifier rubyid_vcount'>vcount</span>        <span class='comment'># =&gt; 3
+</span><span class='id identifier rubyid_g'>g</span><span class='period'>.</span><span class='id identifier rubyid_ecount'>ecount</span>        <span class='comment'># =&gt; 2
+</span><span class='id identifier rubyid_g'>g</span><span class='period'>.</span><span class='id identifier rubyid_directed?'>directed?</span>     <span class='comment'># =&gt; false
+</span><span class='id identifier rubyid_g'>g</span><span class='period'>.</span><span class='id identifier rubyid_degree'>degree</span><span class='lparen'>(</span><span class='int'>0</span><span class='rparen'>)</span>     <span class='comment'># =&gt; 1</span></code></pre>
+    
+  </div>
+
+
+</div>
+
+
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#_destroy-class_method" title="_destroy (class method)">.<strong>_destroy</strong>(ptr)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>GC finalizer helper.</p></div></span>
+  
+</li>
+
+      
+    </ul>
+    
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#==-instance_method" title="#== (instance method)">#<strong>==</strong>(other)  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#add_edges-instance_method" title="#add_edges (instance method)">#<strong>add_edges</strong>(edges)  &#x21d2; self </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Add edges to the graph.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#add_vertices-instance_method" title="#add_vertices (instance method)">#<strong>add_vertices</strong>(n)  &#x21d2; self </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Add vertices to the graph.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#adjacent%3F-instance_method" title="#adjacent? (instance method)">#<strong>adjacent?</strong>(from, to)  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Check if two vertices are connected by an edge.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#connected%3F-instance_method" title="#connected? (instance method)">#<strong>connected?</strong>(mode: :weak)  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Whether the graph is connected.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#degree-instance_method" title="#degree (instance method)">#<strong>degree</strong>(vid, mode: :out)  &#x21d2; Integer </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Get the degree of a vertex.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#delete_edges-instance_method" title="#delete_edges (instance method)">#<strong>delete_edges</strong>(eids)  &#x21d2; self </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Delete edges from the graph.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#delete_vertices-instance_method" title="#delete_vertices (instance method)">#<strong>delete_vertices</strong>(vids)  &#x21d2; self </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Delete vertices from the graph.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#density-instance_method" title="#density (instance method)">#<strong>density</strong>(loops: false)  &#x21d2; Float </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Graph density.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#directed%3F-instance_method" title="#directed? (instance method)">#<strong>directed?</strong>  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Whether the graph is directed.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#each_edge-instance_method" title="#each_edge (instance method)">#<strong>each_edge</strong> {|Array(Integer, Integer)| ... } &#x21d2; Enumerator </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Iterate over all edges.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#each_neighbor-instance_method" title="#each_neighbor (instance method)">#<strong>each_neighbor</strong>(vid, mode: :out) {|Integer| ... } &#x21d2; Array </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Iterate over the neighbors of a vertex.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#each_vertex-instance_method" title="#each_vertex (instance method)">#<strong>each_vertex</strong> {|Integer| ... } &#x21d2; Enumerator </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Iterate over all vertices.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#ecount-instance_method" title="#ecount (instance method)">#<strong>ecount</strong>  &#x21d2; Integer </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Number of edges.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#edges-instance_method" title="#edges (instance method)">#<strong>edges</strong>  &#x21d2; Array&lt;Array(Integer, Integer)&gt; </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Array of all edges.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#forest%3F-instance_method" title="#forest? (instance method)">#<strong>forest?</strong>  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Whether the graph is a forest.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(edges: [], n: nil, directed: false)  &#x21d2; Graph </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>A new instance of Graph.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#inspect-instance_method" title="#inspect (instance method)">#<strong>inspect</strong>  &#x21d2; String </a>
+    
+
+    
+      (also: #to_s)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#pointer-instance_method" title="#pointer (instance method)">#<strong>pointer</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>--------------------------------------------------------------- Low-level pointer (for testing and debugging) ---------------------------------------------------------------.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#simple%3F-instance_method" title="#simple? (instance method)">#<strong>simple?</strong>  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Whether the graph is simple.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#tree%3F-instance_method" title="#tree? (instance method)">#<strong>tree?</strong>  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Whether the graph is a tree.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#vcount-instance_method" title="#vcount (instance method)">#<strong>vcount</strong>  &#x21d2; Integer </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Number of vertices.</p></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#vertices-instance_method" title="#vertices (instance method)">#<strong>vertices</strong>  &#x21d2; Array&lt;Integer&gt; </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Array of all vertex IDs.</p></div></span>
+  
+</li>
+
+      
+    </ul>
+    
+  
+
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    #<strong>initialize</strong>(edges: [], n: nil, directed: false)  &#x21d2; <tt><span class='object_link'><a href="" title="IGraph::Graph (class)">Graph</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Returns a new instance of Graph.</p>
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>edges</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;Array(Integer, Integer)&gt;</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>[]</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Edge list</p></div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>n</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Number of vertices (inferred from edges if omitted)</p></div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>directed</span>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>false</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Whether the graph is directed</p></div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/igraph/graph.rb', line 19</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='label'>edges:</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='label'>n:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>directed:</span> <span class='kw'>false</span><span class='rparen'>)</span>
+  <span class='ivar'>@struct</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="LibIGraph.html" title="IGraph::LibIGraph (module)">LibIGraph</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="LibIGraph/Graph.html" title="IGraph::LibIGraph::Graph (class)">Graph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+  <span class='ivar'>@directed</span> <span class='op'>=</span> <span class='id identifier rubyid_directed'>directed</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_edges'>edges</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
+    <span class='id identifier rubyid_vertex_count'>vertex_count</span> <span class='op'>=</span> <span class='id identifier rubyid_n'>n</span> <span class='op'>||</span> <span class='int'>0</span>
+    <span class='const'><span class='object_link'><a href="../IGraph.html" title="IGraph (module)">IGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_check_error'><span class='object_link'><a href="../IGraph.html#check_error-class_method" title="IGraph.check_error (method)">check_error</a></span></span> <span class='const'><span class='object_link'><a href="LibIGraph.html" title="IGraph::LibIGraph (module)">LibIGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_igraph_empty'><span class='object_link'><a href="LibIGraph.html#igraph_empty-class_method" title="IGraph::LibIGraph.igraph_empty (method)">igraph_empty</a></span></span><span class='lparen'>(</span><span class='ivar'>@struct</span><span class='period'>.</span><span class='id identifier rubyid_pointer'>pointer</span><span class='comma'>,</span> <span class='id identifier rubyid_vertex_count'>vertex_count</span><span class='comma'>,</span> <span class='id identifier rubyid_directed'>directed</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_max_vertex'>max_vertex</span> <span class='op'>=</span> <span class='id identifier rubyid_edges'>edges</span><span class='period'>.</span><span class='id identifier rubyid_flatten'>flatten</span><span class='period'>.</span><span class='id identifier rubyid_max'>max</span>
+    <span class='id identifier rubyid_vertex_count'>vertex_count</span> <span class='op'>=</span> <span class='id identifier rubyid_n'>n</span> <span class='op'>||</span> <span class='lparen'>(</span><span class='id identifier rubyid_max_vertex'>max_vertex</span> <span class='op'>+</span> <span class='int'>1</span><span class='rparen'>)</span>
+
+    <span class='id identifier rubyid_edge_vec'>edge_vec</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="LibIGraph.html" title="IGraph::LibIGraph (module)">LibIGraph</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="LibIGraph/VectorIntStruct.html" title="IGraph::LibIGraph::VectorIntStruct (class)">VectorIntStruct</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+    <span class='const'><span class='object_link'><a href="../IGraph.html" title="IGraph (module)">IGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_check_error'><span class='object_link'><a href="../IGraph.html#check_error-class_method" title="IGraph.check_error (method)">check_error</a></span></span> <span class='const'><span class='object_link'><a href="LibIGraph.html" title="IGraph::LibIGraph (module)">LibIGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_igraph_vector_int_init'><span class='object_link'><a href="LibIGraph.html#igraph_vector_int_init-class_method" title="IGraph::LibIGraph.igraph_vector_int_init (method)">igraph_vector_int_init</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_edge_vec'>edge_vec</span><span class='period'>.</span><span class='id identifier rubyid_pointer'>pointer</span><span class='comma'>,</span> <span class='id identifier rubyid_edges'>edges</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span> <span class='op'>*</span> <span class='int'>2</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_edges'>edges</span><span class='period'>.</span><span class='id identifier rubyid_each_with_index'>each_with_index</span> <span class='kw'>do</span> <span class='op'>|</span><span class='lparen'>(</span><span class='id identifier rubyid_from'>from</span><span class='comma'>,</span> <span class='id identifier rubyid_to'>to</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='id identifier rubyid_i'>i</span><span class='op'>|</span>
+      <span class='const'><span class='object_link'><a href="LibIGraph.html" title="IGraph::LibIGraph (module)">LibIGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_igraph_vector_int_set'><span class='object_link'><a href="LibIGraph.html#igraph_vector_int_set-class_method" title="IGraph::LibIGraph.igraph_vector_int_set (method)">igraph_vector_int_set</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_edge_vec'>edge_vec</span><span class='period'>.</span><span class='id identifier rubyid_pointer'>pointer</span><span class='comma'>,</span> <span class='id identifier rubyid_i'>i</span> <span class='op'>*</span> <span class='int'>2</span><span class='comma'>,</span> <span class='id identifier rubyid_from'>from</span><span class='rparen'>)</span>
+      <span class='const'><span class='object_link'><a href="LibIGraph.html" title="IGraph::LibIGraph (module)">LibIGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_igraph_vector_int_set'><span class='object_link'><a href="LibIGraph.html#igraph_vector_int_set-class_method" title="IGraph::LibIGraph.igraph_vector_int_set (method)">igraph_vector_int_set</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_edge_vec'>edge_vec</span><span class='period'>.</span><span class='id identifier rubyid_pointer'>pointer</span><span class='comma'>,</span> <span class='id identifier rubyid_i'>i</span> <span class='op'>*</span> <span class='int'>2</span> <span class='op'>+</span> <span class='int'>1</span><span class='comma'>,</span> <span class='id identifier rubyid_to'>to</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+
+    <span class='const'><span class='object_link'><a href="../IGraph.html" title="IGraph (module)">IGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_check_error'><span class='object_link'><a href="../IGraph.html#check_error-class_method" title="IGraph.check_error (method)">check_error</a></span></span> <span class='const'><span class='object_link'><a href="LibIGraph.html" title="IGraph::LibIGraph (module)">LibIGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_igraph_create'><span class='object_link'><a href="LibIGraph.html#igraph_create-class_method" title="IGraph::LibIGraph.igraph_create (method)">igraph_create</a></span></span><span class='lparen'>(</span><span class='ivar'>@struct</span><span class='period'>.</span><span class='id identifier rubyid_pointer'>pointer</span><span class='comma'>,</span> <span class='id identifier rubyid_edge_vec'>edge_vec</span><span class='period'>.</span><span class='id identifier rubyid_pointer'>pointer</span><span class='comma'>,</span> <span class='id identifier rubyid_vertex_count'>vertex_count</span><span class='comma'>,</span> <span class='id identifier rubyid_directed'>directed</span><span class='rparen'>)</span>
+    <span class='const'><span class='object_link'><a href="LibIGraph.html" title="IGraph::LibIGraph (module)">LibIGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_igraph_vector_int_destroy'><span class='object_link'><a href="LibIGraph.html#igraph_vector_int_destroy-class_method" title="IGraph::LibIGraph.igraph_vector_int_destroy (method)">igraph_vector_int_destroy</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_edge_vec'>edge_vec</span><span class='period'>.</span><span class='id identifier rubyid_pointer'>pointer</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='const'>ObjectSpace</span><span class='period'>.</span><span class='id identifier rubyid_define_finalizer'>define_finalizer</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid__destroy'>_destroy</span><span class='lparen'>(</span><span class='ivar'>@struct</span><span class='period'>.</span><span class='id identifier rubyid_pointer'>pointer</span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="_destroy-class_method">
+  
+    .<strong>_destroy</strong>(ptr)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>GC finalizer helper</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+279
+280
+281</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/igraph/graph.rb', line 279</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid__destroy'>_destroy</span><span class='lparen'>(</span><span class='id identifier rubyid_ptr'>ptr</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_proc'>proc</span> <span class='lbrace'>{</span> <span class='const'><span class='object_link'><a href="LibIGraph.html" title="IGraph::LibIGraph (module)">LibIGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_igraph_destroy'><span class='object_link'><a href="LibIGraph.html#igraph_destroy-class_method" title="IGraph::LibIGraph.igraph_destroy (method)">igraph_destroy</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_ptr'>ptr</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="==-instance_method">
+  
+    #<strong>==</strong>(other)  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>other</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="IGraph::Graph (class)">Graph</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+239
+240
+241
+242
+243
+244</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/igraph/graph.rb', line 239</span>
+
+<span class='kw'>def</span> <span class='op'>==</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='kw'>false</span> <span class='kw'>unless</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_result_ptr'>result_ptr</span> <span class='op'>=</span> <span class='const'>FFI</span><span class='op'>::</span><span class='const'>MemoryPointer</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:bool</span><span class='comma'>,</span> <span class='int'>1</span><span class='rparen'>)</span>
+  <span class='const'><span class='object_link'><a href="../IGraph.html" title="IGraph (module)">IGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_check_error'><span class='object_link'><a href="../IGraph.html#check_error-class_method" title="IGraph.check_error (method)">check_error</a></span></span> <span class='const'><span class='object_link'><a href="LibIGraph.html" title="IGraph::LibIGraph (module)">LibIGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_igraph_is_same_graph'><span class='object_link'><a href="LibIGraph.html#igraph_is_same_graph-class_method" title="IGraph::LibIGraph.igraph_is_same_graph (method)">igraph_is_same_graph</a></span></span><span class='lparen'>(</span><span class='ivar'>@struct</span><span class='period'>.</span><span class='id identifier rubyid_pointer'>pointer</span><span class='comma'>,</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_instance_variable_get'>instance_variable_get</span><span class='lparen'>(</span><span class='symbol'>:@struct</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_pointer'>pointer</span><span class='comma'>,</span> <span class='id identifier rubyid_result_ptr'>result_ptr</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_result_ptr'>result_ptr</span><span class='period'>.</span><span class='id identifier rubyid_get_uint8'>get_uint8</span><span class='lparen'>(</span><span class='int'>0</span><span class='rparen'>)</span> <span class='op'>!=</span> <span class='int'>0</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="add_edges-instance_method">
+  
+    #<strong>add_edges</strong>(edges)  &#x21d2; <tt>self</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Add edges to the graph</p>
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>edges</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;Array(Integer, Integer)&gt;</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>self</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/igraph/graph.rb', line 78</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_add_edges'>add_edges</span><span class='lparen'>(</span><span class='id identifier rubyid_edges'>edges</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_edge_vec'>edge_vec</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="LibIGraph.html" title="IGraph::LibIGraph (module)">LibIGraph</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="LibIGraph/VectorIntStruct.html" title="IGraph::LibIGraph::VectorIntStruct (class)">VectorIntStruct</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+  <span class='const'><span class='object_link'><a href="../IGraph.html" title="IGraph (module)">IGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_check_error'><span class='object_link'><a href="../IGraph.html#check_error-class_method" title="IGraph.check_error (method)">check_error</a></span></span> <span class='const'><span class='object_link'><a href="LibIGraph.html" title="IGraph::LibIGraph (module)">LibIGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_igraph_vector_int_init'><span class='object_link'><a href="LibIGraph.html#igraph_vector_int_init-class_method" title="IGraph::LibIGraph.igraph_vector_int_init (method)">igraph_vector_int_init</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_edge_vec'>edge_vec</span><span class='period'>.</span><span class='id identifier rubyid_pointer'>pointer</span><span class='comma'>,</span> <span class='id identifier rubyid_edges'>edges</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span> <span class='op'>*</span> <span class='int'>2</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_edges'>edges</span><span class='period'>.</span><span class='id identifier rubyid_each_with_index'>each_with_index</span> <span class='kw'>do</span> <span class='op'>|</span><span class='lparen'>(</span><span class='id identifier rubyid_from'>from</span><span class='comma'>,</span> <span class='id identifier rubyid_to'>to</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='id identifier rubyid_i'>i</span><span class='op'>|</span>
+    <span class='const'><span class='object_link'><a href="LibIGraph.html" title="IGraph::LibIGraph (module)">LibIGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_igraph_vector_int_set'><span class='object_link'><a href="LibIGraph.html#igraph_vector_int_set-class_method" title="IGraph::LibIGraph.igraph_vector_int_set (method)">igraph_vector_int_set</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_edge_vec'>edge_vec</span><span class='period'>.</span><span class='id identifier rubyid_pointer'>pointer</span><span class='comma'>,</span> <span class='id identifier rubyid_i'>i</span> <span class='op'>*</span> <span class='int'>2</span><span class='comma'>,</span> <span class='id identifier rubyid_from'>from</span><span class='rparen'>)</span>
+    <span class='const'><span class='object_link'><a href="LibIGraph.html" title="IGraph::LibIGraph (module)">LibIGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_igraph_vector_int_set'><span class='object_link'><a href="LibIGraph.html#igraph_vector_int_set-class_method" title="IGraph::LibIGraph.igraph_vector_int_set (method)">igraph_vector_int_set</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_edge_vec'>edge_vec</span><span class='period'>.</span><span class='id identifier rubyid_pointer'>pointer</span><span class='comma'>,</span> <span class='id identifier rubyid_i'>i</span> <span class='op'>*</span> <span class='int'>2</span> <span class='op'>+</span> <span class='int'>1</span><span class='comma'>,</span> <span class='id identifier rubyid_to'>to</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  <span class='const'><span class='object_link'><a href="../IGraph.html" title="IGraph (module)">IGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_check_error'><span class='object_link'><a href="../IGraph.html#check_error-class_method" title="IGraph.check_error (method)">check_error</a></span></span> <span class='const'><span class='object_link'><a href="LibIGraph.html" title="IGraph::LibIGraph (module)">LibIGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_igraph_add_edges'><span class='object_link'><a href="LibIGraph.html#igraph_add_edges-class_method" title="IGraph::LibIGraph.igraph_add_edges (method)">igraph_add_edges</a></span></span><span class='lparen'>(</span><span class='ivar'>@struct</span><span class='period'>.</span><span class='id identifier rubyid_pointer'>pointer</span><span class='comma'>,</span> <span class='id identifier rubyid_edge_vec'>edge_vec</span><span class='period'>.</span><span class='id identifier rubyid_pointer'>pointer</span><span class='comma'>,</span> <span class='const'>FFI</span><span class='op'>::</span><span class='const'>Pointer</span><span class='op'>::</span><span class='const'>NULL</span><span class='rparen'>)</span>
+  <span class='const'><span class='object_link'><a href="LibIGraph.html" title="IGraph::LibIGraph (module)">LibIGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_igraph_vector_int_destroy'><span class='object_link'><a href="LibIGraph.html#igraph_vector_int_destroy-class_method" title="IGraph::LibIGraph.igraph_vector_int_destroy (method)">igraph_vector_int_destroy</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_edge_vec'>edge_vec</span><span class='period'>.</span><span class='id identifier rubyid_pointer'>pointer</span><span class='rparen'>)</span>
+  <span class='kw'>self</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="add_vertices-instance_method">
+  
+    #<strong>add_vertices</strong>(n)  &#x21d2; <tt>self</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Add vertices to the graph</p>
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>n</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Number of vertices to add</p></div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>self</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+70
+71
+72
+73</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/igraph/graph.rb', line 70</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_add_vertices'>add_vertices</span><span class='lparen'>(</span><span class='id identifier rubyid_n'>n</span><span class='rparen'>)</span>
+  <span class='const'><span class='object_link'><a href="../IGraph.html" title="IGraph (module)">IGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_check_error'><span class='object_link'><a href="../IGraph.html#check_error-class_method" title="IGraph.check_error (method)">check_error</a></span></span> <span class='const'><span class='object_link'><a href="LibIGraph.html" title="IGraph::LibIGraph (module)">LibIGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_igraph_add_vertices'><span class='object_link'><a href="LibIGraph.html#igraph_add_vertices-class_method" title="IGraph::LibIGraph.igraph_add_vertices (method)">igraph_add_vertices</a></span></span><span class='lparen'>(</span><span class='ivar'>@struct</span><span class='period'>.</span><span class='id identifier rubyid_pointer'>pointer</span><span class='comma'>,</span> <span class='id identifier rubyid_n'>n</span><span class='comma'>,</span> <span class='const'>FFI</span><span class='op'>::</span><span class='const'>Pointer</span><span class='op'>::</span><span class='const'>NULL</span><span class='rparen'>)</span>
+  <span class='kw'>self</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="adjacent?-instance_method">
+  
+    #<strong>adjacent?</strong>(from, to)  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Check if two vertices are connected by an edge</p>
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>from</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>to</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+126
+127
+128
+129
+130</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/igraph/graph.rb', line 126</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_adjacent?'>adjacent?</span><span class='lparen'>(</span><span class='id identifier rubyid_from'>from</span><span class='comma'>,</span> <span class='id identifier rubyid_to'>to</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_result_ptr'>result_ptr</span> <span class='op'>=</span> <span class='const'>FFI</span><span class='op'>::</span><span class='const'>MemoryPointer</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:bool</span><span class='comma'>,</span> <span class='int'>1</span><span class='rparen'>)</span>
+  <span class='const'><span class='object_link'><a href="../IGraph.html" title="IGraph (module)">IGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_check_error'><span class='object_link'><a href="../IGraph.html#check_error-class_method" title="IGraph.check_error (method)">check_error</a></span></span> <span class='const'><span class='object_link'><a href="LibIGraph.html" title="IGraph::LibIGraph (module)">LibIGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_igraph_are_adjacent'><span class='object_link'><a href="LibIGraph.html#igraph_are_adjacent-class_method" title="IGraph::LibIGraph.igraph_are_adjacent (method)">igraph_are_adjacent</a></span></span><span class='lparen'>(</span><span class='ivar'>@struct</span><span class='period'>.</span><span class='id identifier rubyid_pointer'>pointer</span><span class='comma'>,</span> <span class='id identifier rubyid_from'>from</span><span class='comma'>,</span> <span class='id identifier rubyid_to'>to</span><span class='comma'>,</span> <span class='id identifier rubyid_result_ptr'>result_ptr</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_result_ptr'>result_ptr</span><span class='period'>.</span><span class='id identifier rubyid_get_uint8'>get_uint8</span><span class='lparen'>(</span><span class='int'>0</span><span class='rparen'>)</span> <span class='op'>!=</span> <span class='int'>0</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="connected?-instance_method">
+  
+    #<strong>connected?</strong>(mode: :weak)  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Returns Whether the graph is connected.</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Whether the graph is connected</p></div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+213
+214
+215
+216
+217</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/igraph/graph.rb', line 213</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_connected?'>connected?</span><span class='lparen'>(</span><span class='label'>mode:</span> <span class='symbol'>:weak</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_result_ptr'>result_ptr</span> <span class='op'>=</span> <span class='const'>FFI</span><span class='op'>::</span><span class='const'>MemoryPointer</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:bool</span><span class='comma'>,</span> <span class='int'>1</span><span class='rparen'>)</span>
+  <span class='const'><span class='object_link'><a href="../IGraph.html" title="IGraph (module)">IGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_check_error'><span class='object_link'><a href="../IGraph.html#check_error-class_method" title="IGraph.check_error (method)">check_error</a></span></span> <span class='const'><span class='object_link'><a href="LibIGraph.html" title="IGraph::LibIGraph (module)">LibIGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_igraph_is_connected'><span class='object_link'><a href="LibIGraph.html#igraph_is_connected-class_method" title="IGraph::LibIGraph.igraph_is_connected (method)">igraph_is_connected</a></span></span><span class='lparen'>(</span><span class='ivar'>@struct</span><span class='period'>.</span><span class='id identifier rubyid_pointer'>pointer</span><span class='comma'>,</span> <span class='id identifier rubyid_result_ptr'>result_ptr</span><span class='comma'>,</span> <span class='id identifier rubyid__conn_mode_to_i'>_conn_mode_to_i</span><span class='lparen'>(</span><span class='id identifier rubyid_mode'>mode</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_result_ptr'>result_ptr</span><span class='period'>.</span><span class='id identifier rubyid_get_uint8'>get_uint8</span><span class='lparen'>(</span><span class='int'>0</span><span class='rparen'>)</span> <span class='op'>!=</span> <span class='int'>0</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="degree-instance_method">
+  
+    #<strong>degree</strong>(vid, mode: :out)  &#x21d2; <tt>Integer</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Get the degree of a vertex</p>
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>vid</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>mode</span>
+      
+      
+        <span class='type'>(<tt>:out</tt>, <tt>:in</tt>, <tt>:all</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>:out</tt>)</em>
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+136
+137
+138
+139
+140</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/igraph/graph.rb', line 136</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_degree'>degree</span><span class='lparen'>(</span><span class='id identifier rubyid_vid'>vid</span><span class='comma'>,</span> <span class='label'>mode:</span> <span class='symbol'>:out</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_result_ptr'>result_ptr</span> <span class='op'>=</span> <span class='const'>FFI</span><span class='op'>::</span><span class='const'>MemoryPointer</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:long_long</span><span class='comma'>,</span> <span class='int'>1</span><span class='rparen'>)</span>
+  <span class='const'><span class='object_link'><a href="../IGraph.html" title="IGraph (module)">IGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_check_error'><span class='object_link'><a href="../IGraph.html#check_error-class_method" title="IGraph.check_error (method)">check_error</a></span></span> <span class='const'><span class='object_link'><a href="LibIGraph.html" title="IGraph::LibIGraph (module)">LibIGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_igraph_degree_1'><span class='object_link'><a href="LibIGraph.html#igraph_degree_1-class_method" title="IGraph::LibIGraph.igraph_degree_1 (method)">igraph_degree_1</a></span></span><span class='lparen'>(</span><span class='ivar'>@struct</span><span class='period'>.</span><span class='id identifier rubyid_pointer'>pointer</span><span class='comma'>,</span> <span class='id identifier rubyid_result_ptr'>result_ptr</span><span class='comma'>,</span> <span class='id identifier rubyid_vid'>vid</span><span class='comma'>,</span> <span class='id identifier rubyid__mode_to_i'>_mode_to_i</span><span class='lparen'>(</span><span class='id identifier rubyid_mode'>mode</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='kw'>false</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_result_ptr'>result_ptr</span><span class='period'>.</span><span class='id identifier rubyid_get_long_long'>get_long_long</span><span class='lparen'>(</span><span class='int'>0</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="delete_edges-instance_method">
+  
+    #<strong>delete_edges</strong>(eids)  &#x21d2; <tt>self</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Delete edges from the graph</p>
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>eids</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>, <tt>Array&lt;Integer&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Edge IDs to delete</p></div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>self</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/igraph/graph.rb', line 109</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_delete_edges'>delete_edges</span><span class='lparen'>(</span><span class='id identifier rubyid_eids'>eids</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_eids'>eids</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='id identifier rubyid_eids'>eids</span><span class='rbracket'>]</span> <span class='kw'>if</span> <span class='id identifier rubyid_eids'>eids</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Integer</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_vec'>vec</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="LibIGraph.html" title="IGraph::LibIGraph (module)">LibIGraph</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="LibIGraph/VectorIntStruct.html" title="IGraph::LibIGraph::VectorIntStruct (class)">VectorIntStruct</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+  <span class='const'><span class='object_link'><a href="../IGraph.html" title="IGraph (module)">IGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_check_error'><span class='object_link'><a href="../IGraph.html#check_error-class_method" title="IGraph.check_error (method)">check_error</a></span></span> <span class='const'><span class='object_link'><a href="LibIGraph.html" title="IGraph::LibIGraph (module)">LibIGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_igraph_vector_int_init'><span class='object_link'><a href="LibIGraph.html#igraph_vector_int_init-class_method" title="IGraph::LibIGraph.igraph_vector_int_init (method)">igraph_vector_int_init</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_vec'>vec</span><span class='period'>.</span><span class='id identifier rubyid_pointer'>pointer</span><span class='comma'>,</span> <span class='id identifier rubyid_eids'>eids</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_eids'>eids</span><span class='period'>.</span><span class='id identifier rubyid_each_with_index'>each_with_index</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_v'>v</span><span class='comma'>,</span> <span class='id identifier rubyid_i'>i</span><span class='op'>|</span> <span class='const'><span class='object_link'><a href="LibIGraph.html" title="IGraph::LibIGraph (module)">LibIGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_igraph_vector_int_set'><span class='object_link'><a href="LibIGraph.html#igraph_vector_int_set-class_method" title="IGraph::LibIGraph.igraph_vector_int_set (method)">igraph_vector_int_set</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_vec'>vec</span><span class='period'>.</span><span class='id identifier rubyid_pointer'>pointer</span><span class='comma'>,</span> <span class='id identifier rubyid_i'>i</span><span class='comma'>,</span> <span class='id identifier rubyid_v'>v</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_es'>es</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="LibIGraph.html" title="IGraph::LibIGraph (module)">LibIGraph</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="LibIGraph/EdgeSelector.html" title="IGraph::LibIGraph::EdgeSelector (class)">EdgeSelector</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+  <span class='const'><span class='object_link'><a href="../IGraph.html" title="IGraph (module)">IGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_check_error'><span class='object_link'><a href="../IGraph.html#check_error-class_method" title="IGraph.check_error (method)">check_error</a></span></span> <span class='const'><span class='object_link'><a href="LibIGraph.html" title="IGraph::LibIGraph (module)">LibIGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_igraph_es_vector'><span class='object_link'><a href="LibIGraph.html#igraph_es_vector-class_method" title="IGraph::LibIGraph.igraph_es_vector (method)">igraph_es_vector</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_es'>es</span><span class='comma'>,</span> <span class='id identifier rubyid_vec'>vec</span><span class='period'>.</span><span class='id identifier rubyid_pointer'>pointer</span><span class='rparen'>)</span>
+  <span class='const'><span class='object_link'><a href="../IGraph.html" title="IGraph (module)">IGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_check_error'><span class='object_link'><a href="../IGraph.html#check_error-class_method" title="IGraph.check_error (method)">check_error</a></span></span> <span class='const'><span class='object_link'><a href="LibIGraph.html" title="IGraph::LibIGraph (module)">LibIGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_igraph_delete_edges'><span class='object_link'><a href="LibIGraph.html#igraph_delete_edges-class_method" title="IGraph::LibIGraph.igraph_delete_edges (method)">igraph_delete_edges</a></span></span><span class='lparen'>(</span><span class='ivar'>@struct</span><span class='period'>.</span><span class='id identifier rubyid_pointer'>pointer</span><span class='comma'>,</span> <span class='id identifier rubyid_es'>es</span><span class='rparen'>)</span>
+  <span class='const'><span class='object_link'><a href="LibIGraph.html" title="IGraph::LibIGraph (module)">LibIGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_igraph_es_destroy'><span class='object_link'><a href="LibIGraph.html#igraph_es_destroy-class_method" title="IGraph::LibIGraph.igraph_es_destroy (method)">igraph_es_destroy</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_es'>es</span><span class='rparen'>)</span>
+  <span class='const'><span class='object_link'><a href="LibIGraph.html" title="IGraph::LibIGraph (module)">LibIGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_igraph_vector_int_destroy'><span class='object_link'><a href="LibIGraph.html#igraph_vector_int_destroy-class_method" title="IGraph::LibIGraph.igraph_vector_int_destroy (method)">igraph_vector_int_destroy</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_vec'>vec</span><span class='period'>.</span><span class='id identifier rubyid_pointer'>pointer</span><span class='rparen'>)</span>
+  <span class='kw'>self</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="delete_vertices-instance_method">
+  
+    #<strong>delete_vertices</strong>(vids)  &#x21d2; <tt>self</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Delete vertices from the graph</p>
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>vids</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>, <tt>Array&lt;Integer&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Vertex IDs to delete</p></div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>self</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/igraph/graph.rb', line 93</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_delete_vertices'>delete_vertices</span><span class='lparen'>(</span><span class='id identifier rubyid_vids'>vids</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_vids'>vids</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='id identifier rubyid_vids'>vids</span><span class='rbracket'>]</span> <span class='kw'>if</span> <span class='id identifier rubyid_vids'>vids</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Integer</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_vec'>vec</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="LibIGraph.html" title="IGraph::LibIGraph (module)">LibIGraph</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="LibIGraph/VectorIntStruct.html" title="IGraph::LibIGraph::VectorIntStruct (class)">VectorIntStruct</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+  <span class='const'><span class='object_link'><a href="../IGraph.html" title="IGraph (module)">IGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_check_error'><span class='object_link'><a href="../IGraph.html#check_error-class_method" title="IGraph.check_error (method)">check_error</a></span></span> <span class='const'><span class='object_link'><a href="LibIGraph.html" title="IGraph::LibIGraph (module)">LibIGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_igraph_vector_int_init'><span class='object_link'><a href="LibIGraph.html#igraph_vector_int_init-class_method" title="IGraph::LibIGraph.igraph_vector_int_init (method)">igraph_vector_int_init</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_vec'>vec</span><span class='period'>.</span><span class='id identifier rubyid_pointer'>pointer</span><span class='comma'>,</span> <span class='id identifier rubyid_vids'>vids</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_vids'>vids</span><span class='period'>.</span><span class='id identifier rubyid_each_with_index'>each_with_index</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_v'>v</span><span class='comma'>,</span> <span class='id identifier rubyid_i'>i</span><span class='op'>|</span> <span class='const'><span class='object_link'><a href="LibIGraph.html" title="IGraph::LibIGraph (module)">LibIGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_igraph_vector_int_set'><span class='object_link'><a href="LibIGraph.html#igraph_vector_int_set-class_method" title="IGraph::LibIGraph.igraph_vector_int_set (method)">igraph_vector_int_set</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_vec'>vec</span><span class='period'>.</span><span class='id identifier rubyid_pointer'>pointer</span><span class='comma'>,</span> <span class='id identifier rubyid_i'>i</span><span class='comma'>,</span> <span class='id identifier rubyid_v'>v</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_vs'>vs</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="LibIGraph.html" title="IGraph::LibIGraph (module)">LibIGraph</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="LibIGraph/VertexSelector.html" title="IGraph::LibIGraph::VertexSelector (class)">VertexSelector</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+  <span class='const'><span class='object_link'><a href="../IGraph.html" title="IGraph (module)">IGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_check_error'><span class='object_link'><a href="../IGraph.html#check_error-class_method" title="IGraph.check_error (method)">check_error</a></span></span> <span class='const'><span class='object_link'><a href="LibIGraph.html" title="IGraph::LibIGraph (module)">LibIGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_igraph_vs_vector'><span class='object_link'><a href="LibIGraph.html#igraph_vs_vector-class_method" title="IGraph::LibIGraph.igraph_vs_vector (method)">igraph_vs_vector</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_vs'>vs</span><span class='comma'>,</span> <span class='id identifier rubyid_vec'>vec</span><span class='period'>.</span><span class='id identifier rubyid_pointer'>pointer</span><span class='rparen'>)</span>
+  <span class='const'><span class='object_link'><a href="../IGraph.html" title="IGraph (module)">IGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_check_error'><span class='object_link'><a href="../IGraph.html#check_error-class_method" title="IGraph.check_error (method)">check_error</a></span></span> <span class='const'><span class='object_link'><a href="LibIGraph.html" title="IGraph::LibIGraph (module)">LibIGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_igraph_delete_vertices'><span class='object_link'><a href="LibIGraph.html#igraph_delete_vertices-class_method" title="IGraph::LibIGraph.igraph_delete_vertices (method)">igraph_delete_vertices</a></span></span><span class='lparen'>(</span><span class='ivar'>@struct</span><span class='period'>.</span><span class='id identifier rubyid_pointer'>pointer</span><span class='comma'>,</span> <span class='id identifier rubyid_vs'>vs</span><span class='rparen'>)</span>
+  <span class='const'><span class='object_link'><a href="LibIGraph.html" title="IGraph::LibIGraph (module)">LibIGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_igraph_vs_destroy'><span class='object_link'><a href="LibIGraph.html#igraph_vs_destroy-class_method" title="IGraph::LibIGraph.igraph_vs_destroy (method)">igraph_vs_destroy</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_vs'>vs</span><span class='rparen'>)</span>
+  <span class='const'><span class='object_link'><a href="LibIGraph.html" title="IGraph::LibIGraph (module)">LibIGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_igraph_vector_int_destroy'><span class='object_link'><a href="LibIGraph.html#igraph_vector_int_destroy-class_method" title="IGraph::LibIGraph.igraph_vector_int_destroy (method)">igraph_vector_int_destroy</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_vec'>vec</span><span class='period'>.</span><span class='id identifier rubyid_pointer'>pointer</span><span class='rparen'>)</span>
+  <span class='kw'>self</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="density-instance_method">
+  
+    #<strong>density</strong>(loops: false)  &#x21d2; <tt>Float</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Returns Graph density.</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Float</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Graph density</p></div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+199
+200
+201
+202
+203</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/igraph/graph.rb', line 199</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_density'>density</span><span class='lparen'>(</span><span class='label'>loops:</span> <span class='kw'>false</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_result_ptr'>result_ptr</span> <span class='op'>=</span> <span class='const'>FFI</span><span class='op'>::</span><span class='const'>MemoryPointer</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:double</span><span class='comma'>,</span> <span class='int'>1</span><span class='rparen'>)</span>
+  <span class='const'><span class='object_link'><a href="../IGraph.html" title="IGraph (module)">IGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_check_error'><span class='object_link'><a href="../IGraph.html#check_error-class_method" title="IGraph.check_error (method)">check_error</a></span></span> <span class='const'><span class='object_link'><a href="LibIGraph.html" title="IGraph::LibIGraph (module)">LibIGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_igraph_density'><span class='object_link'><a href="LibIGraph.html#igraph_density-class_method" title="IGraph::LibIGraph.igraph_density (method)">igraph_density</a></span></span><span class='lparen'>(</span><span class='ivar'>@struct</span><span class='period'>.</span><span class='id identifier rubyid_pointer'>pointer</span><span class='comma'>,</span> <span class='const'>FFI</span><span class='op'>::</span><span class='const'>Pointer</span><span class='op'>::</span><span class='const'>NULL</span><span class='comma'>,</span> <span class='id identifier rubyid_result_ptr'>result_ptr</span><span class='comma'>,</span> <span class='id identifier rubyid_loops'>loops</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_result_ptr'>result_ptr</span><span class='period'>.</span><span class='id identifier rubyid_get_double'>get_double</span><span class='lparen'>(</span><span class='int'>0</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="directed?-instance_method">
+  
+    #<strong>directed?</strong>  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Returns Whether the graph is directed.</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Whether the graph is directed</p></div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+59
+60
+61</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/igraph/graph.rb', line 59</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_directed?'>directed?</span>
+  <span class='ivar'>@directed</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="each_edge-instance_method">
+  
+    #<strong>each_edge</strong> {|Array(Integer, Integer)| ... } &#x21d2; <tt>Enumerator</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Iterate over all edges</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array(Integer, Integer)</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Edge endpoints (from, to)</p></div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Enumerator</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>When no block is given</p></div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/igraph/graph.rb', line 157</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_each_edge'>each_edge</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_to_enum'>to_enum</span><span class='lparen'>(</span><span class='symbol'>:each_edge</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+  <span class='id identifier rubyid_n'>n</span> <span class='op'>=</span> <span class='id identifier rubyid_ecount'>ecount</span>
+  <span class='id identifier rubyid_from_ptr'>from_ptr</span> <span class='op'>=</span> <span class='const'>FFI</span><span class='op'>::</span><span class='const'>MemoryPointer</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:long_long</span><span class='comma'>,</span> <span class='int'>1</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_to_ptr'>to_ptr</span>   <span class='op'>=</span> <span class='const'>FFI</span><span class='op'>::</span><span class='const'>MemoryPointer</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:long_long</span><span class='comma'>,</span> <span class='int'>1</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_n'>n</span><span class='period'>.</span><span class='id identifier rubyid_times'>times</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_eid'>eid</span><span class='op'>|</span>
+    <span class='const'><span class='object_link'><a href="../IGraph.html" title="IGraph (module)">IGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_check_error'><span class='object_link'><a href="../IGraph.html#check_error-class_method" title="IGraph.check_error (method)">check_error</a></span></span> <span class='const'><span class='object_link'><a href="LibIGraph.html" title="IGraph::LibIGraph (module)">LibIGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_igraph_edge'><span class='object_link'><a href="LibIGraph.html#igraph_edge-class_method" title="IGraph::LibIGraph.igraph_edge (method)">igraph_edge</a></span></span><span class='lparen'>(</span><span class='ivar'>@struct</span><span class='period'>.</span><span class='id identifier rubyid_pointer'>pointer</span><span class='comma'>,</span> <span class='id identifier rubyid_eid'>eid</span><span class='comma'>,</span> <span class='id identifier rubyid_from_ptr'>from_ptr</span><span class='comma'>,</span> <span class='id identifier rubyid_to_ptr'>to_ptr</span><span class='rparen'>)</span>
+    <span class='kw'>yield</span> <span class='lbracket'>[</span><span class='id identifier rubyid_from_ptr'>from_ptr</span><span class='period'>.</span><span class='id identifier rubyid_get_long_long'>get_long_long</span><span class='lparen'>(</span><span class='int'>0</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='id identifier rubyid_to_ptr'>to_ptr</span><span class='period'>.</span><span class='id identifier rubyid_get_long_long'>get_long_long</span><span class='lparen'>(</span><span class='int'>0</span><span class='rparen'>)</span><span class='rbracket'>]</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="each_neighbor-instance_method">
+  
+    #<strong>each_neighbor</strong>(vid, mode: :out) {|Integer| ... } &#x21d2; <tt>Array</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Iterate over the neighbors of a vertex</p>
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>vid</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>mode</span>
+      
+      
+        <span class='type'>(<tt>:out</tt>, <tt>:in</tt>, <tt>:all</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>:out</tt>)</em>
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Neighbor vertex ID</p></div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>When no block is given</p></div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/igraph/graph.rb', line 173</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_each_neighbor'>each_neighbor</span><span class='lparen'>(</span><span class='id identifier rubyid_vid'>vid</span><span class='comma'>,</span> <span class='label'>mode:</span> <span class='symbol'>:out</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_vec'>vec</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="LibIGraph.html" title="IGraph::LibIGraph (module)">LibIGraph</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="LibIGraph/VectorIntStruct.html" title="IGraph::LibIGraph::VectorIntStruct (class)">VectorIntStruct</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+  <span class='const'><span class='object_link'><a href="../IGraph.html" title="IGraph (module)">IGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_check_error'><span class='object_link'><a href="../IGraph.html#check_error-class_method" title="IGraph.check_error (method)">check_error</a></span></span> <span class='const'><span class='object_link'><a href="LibIGraph.html" title="IGraph::LibIGraph (module)">LibIGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_igraph_vector_int_init'><span class='object_link'><a href="LibIGraph.html#igraph_vector_int_init-class_method" title="IGraph::LibIGraph.igraph_vector_int_init (method)">igraph_vector_int_init</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_vec'>vec</span><span class='period'>.</span><span class='id identifier rubyid_pointer'>pointer</span><span class='comma'>,</span> <span class='int'>0</span><span class='rparen'>)</span>
+  <span class='const'><span class='object_link'><a href="../IGraph.html" title="IGraph (module)">IGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_check_error'><span class='object_link'><a href="../IGraph.html#check_error-class_method" title="IGraph.check_error (method)">check_error</a></span></span> <span class='const'><span class='object_link'><a href="LibIGraph.html" title="IGraph::LibIGraph (module)">LibIGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_igraph_neighbors'><span class='object_link'><a href="LibIGraph.html#igraph_neighbors-class_method" title="IGraph::LibIGraph.igraph_neighbors (method)">igraph_neighbors</a></span></span><span class='lparen'>(</span><span class='ivar'>@struct</span><span class='period'>.</span><span class='id identifier rubyid_pointer'>pointer</span><span class='comma'>,</span> <span class='id identifier rubyid_vec'>vec</span><span class='period'>.</span><span class='id identifier rubyid_pointer'>pointer</span><span class='comma'>,</span> <span class='id identifier rubyid_vid'>vid</span><span class='comma'>,</span> <span class='id identifier rubyid__mode_to_i'>_mode_to_i</span><span class='lparen'>(</span><span class='id identifier rubyid_mode'>mode</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_count'>count</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="LibIGraph.html" title="IGraph::LibIGraph (module)">LibIGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_igraph_vector_int_size'><span class='object_link'><a href="LibIGraph.html#igraph_vector_int_size-class_method" title="IGraph::LibIGraph.igraph_vector_int_size (method)">igraph_vector_int_size</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_vec'>vec</span><span class='period'>.</span><span class='id identifier rubyid_pointer'>pointer</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='const'>Array</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_count'>count</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_i'>i</span><span class='op'>|</span> <span class='const'><span class='object_link'><a href="LibIGraph.html" title="IGraph::LibIGraph (module)">LibIGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_igraph_vector_int_get'><span class='object_link'><a href="LibIGraph.html#igraph_vector_int_get-class_method" title="IGraph::LibIGraph.igraph_vector_int_get (method)">igraph_vector_int_get</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_vec'>vec</span><span class='period'>.</span><span class='id identifier rubyid_pointer'>pointer</span><span class='comma'>,</span> <span class='id identifier rubyid_i'>i</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='const'><span class='object_link'><a href="LibIGraph.html" title="IGraph::LibIGraph (module)">LibIGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_igraph_vector_int_destroy'><span class='object_link'><a href="LibIGraph.html#igraph_vector_int_destroy-class_method" title="IGraph::LibIGraph.igraph_vector_int_destroy (method)">igraph_vector_int_destroy</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_vec'>vec</span><span class='period'>.</span><span class='id identifier rubyid_pointer'>pointer</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_result'>result</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+  <span class='id identifier rubyid_result'>result</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="each_vertex-instance_method">
+  
+    #<strong>each_vertex</strong> {|Integer| ... } &#x21d2; <tt>Enumerator</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Iterate over all vertices</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Vertex ID</p></div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Enumerator</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>When no block is given</p></div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+149
+150
+151
+152</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/igraph/graph.rb', line 149</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_each_vertex'>each_vertex</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_to_enum'>to_enum</span><span class='lparen'>(</span><span class='symbol'>:each_vertex</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+  <span class='id identifier rubyid_vcount'>vcount</span><span class='period'>.</span><span class='id identifier rubyid_times'>times</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="ecount-instance_method">
+  
+    #<strong>ecount</strong>  &#x21d2; <tt>Integer</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Returns Number of edges.</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Number of edges</p></div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+54
+55
+56</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/igraph/graph.rb', line 54</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_ecount'>ecount</span>
+  <span class='const'><span class='object_link'><a href="LibIGraph.html" title="IGraph::LibIGraph (module)">LibIGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_igraph_ecount'><span class='object_link'><a href="LibIGraph.html#igraph_ecount-class_method" title="IGraph::LibIGraph.igraph_ecount (method)">igraph_ecount</a></span></span><span class='lparen'>(</span><span class='ivar'>@struct</span><span class='period'>.</span><span class='id identifier rubyid_pointer'>pointer</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="edges-instance_method">
+  
+    #<strong>edges</strong>  &#x21d2; <tt>Array&lt;Array(Integer, Integer)&gt;</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Returns Array of all edges.</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;Array(Integer, Integer)&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Array of all edges</p></div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+190
+191
+192</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/igraph/graph.rb', line 190</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_edges'>edges</span>
+  <span class='id identifier rubyid_each_edge'>each_edge</span><span class='period'>.</span><span class='id identifier rubyid_to_a'>to_a</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="forest?-instance_method">
+  
+    #<strong>forest?</strong>  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Returns Whether the graph is a forest.</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Whether the graph is a forest</p></div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+227
+228
+229
+230
+231</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/igraph/graph.rb', line 227</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_forest?'>forest?</span>
+  <span class='id identifier rubyid_result_ptr'>result_ptr</span> <span class='op'>=</span> <span class='const'>FFI</span><span class='op'>::</span><span class='const'>MemoryPointer</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:bool</span><span class='comma'>,</span> <span class='int'>1</span><span class='rparen'>)</span>
+  <span class='const'><span class='object_link'><a href="../IGraph.html" title="IGraph (module)">IGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_check_error'><span class='object_link'><a href="../IGraph.html#check_error-class_method" title="IGraph.check_error (method)">check_error</a></span></span> <span class='const'><span class='object_link'><a href="LibIGraph.html" title="IGraph::LibIGraph (module)">LibIGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_igraph_is_forest'><span class='object_link'><a href="LibIGraph.html#igraph_is_forest-class_method" title="IGraph::LibIGraph.igraph_is_forest (method)">igraph_is_forest</a></span></span><span class='lparen'>(</span><span class='ivar'>@struct</span><span class='period'>.</span><span class='id identifier rubyid_pointer'>pointer</span><span class='comma'>,</span> <span class='id identifier rubyid_result_ptr'>result_ptr</span><span class='comma'>,</span> <span class='const'>FFI</span><span class='op'>::</span><span class='const'>Pointer</span><span class='op'>::</span><span class='const'>NULL</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="LibIGraph.html" title="IGraph::LibIGraph (module)">LibIGraph</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="LibIGraph.html#IGRAPH_ALL-constant" title="IGraph::LibIGraph::IGRAPH_ALL (constant)">IGRAPH_ALL</a></span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_result_ptr'>result_ptr</span><span class='period'>.</span><span class='id identifier rubyid_get_uint8'>get_uint8</span><span class='lparen'>(</span><span class='int'>0</span><span class='rparen'>)</span> <span class='op'>!=</span> <span class='int'>0</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="inspect-instance_method">
+  
+    #<strong>inspect</strong>  &#x21d2; <tt>String</tt> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='to_s-instance_method'>to_s</span></span>
+    </span>
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+247
+248
+249</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/igraph/graph.rb', line 247</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>#&lt;IGraph::Graph vcount=</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_vcount'>vcount</span><span class='embexpr_end'>}</span><span class='tstring_content'> ecount=</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_ecount'>ecount</span><span class='embexpr_end'>}</span><span class='tstring_content'> directed=</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_directed?'>directed?</span><span class='embexpr_end'>}</span><span class='tstring_content'>&gt;</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="pointer-instance_method">
+  
+    #<strong>pointer</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <hr />
+<h2 id="Low_level_pointer__for_testing_and_debugging_">Low-level pointer (for testing and debugging)</h2>
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+255
+256
+257</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/igraph/graph.rb', line 255</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_pointer'>pointer</span>
+  <span class='ivar'>@struct</span><span class='period'>.</span><span class='id identifier rubyid_pointer'>pointer</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="simple?-instance_method">
+  
+    #<strong>simple?</strong>  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Returns Whether the graph is simple.</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Whether the graph is simple</p></div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+206
+207
+208
+209
+210</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/igraph/graph.rb', line 206</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_simple?'>simple?</span>
+  <span class='id identifier rubyid_result_ptr'>result_ptr</span> <span class='op'>=</span> <span class='const'>FFI</span><span class='op'>::</span><span class='const'>MemoryPointer</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:bool</span><span class='comma'>,</span> <span class='int'>1</span><span class='rparen'>)</span>
+  <span class='const'><span class='object_link'><a href="../IGraph.html" title="IGraph (module)">IGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_check_error'><span class='object_link'><a href="../IGraph.html#check_error-class_method" title="IGraph.check_error (method)">check_error</a></span></span> <span class='const'><span class='object_link'><a href="LibIGraph.html" title="IGraph::LibIGraph (module)">LibIGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_igraph_is_simple'><span class='object_link'><a href="LibIGraph.html#igraph_is_simple-class_method" title="IGraph::LibIGraph.igraph_is_simple (method)">igraph_is_simple</a></span></span><span class='lparen'>(</span><span class='ivar'>@struct</span><span class='period'>.</span><span class='id identifier rubyid_pointer'>pointer</span><span class='comma'>,</span> <span class='id identifier rubyid_result_ptr'>result_ptr</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_result_ptr'>result_ptr</span><span class='period'>.</span><span class='id identifier rubyid_get_uint8'>get_uint8</span><span class='lparen'>(</span><span class='int'>0</span><span class='rparen'>)</span> <span class='op'>!=</span> <span class='int'>0</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="tree?-instance_method">
+  
+    #<strong>tree?</strong>  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Returns Whether the graph is a tree.</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Whether the graph is a tree</p></div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+220
+221
+222
+223
+224</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/igraph/graph.rb', line 220</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_tree?'>tree?</span>
+  <span class='id identifier rubyid_result_ptr'>result_ptr</span> <span class='op'>=</span> <span class='const'>FFI</span><span class='op'>::</span><span class='const'>MemoryPointer</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:bool</span><span class='comma'>,</span> <span class='int'>1</span><span class='rparen'>)</span>
+  <span class='const'><span class='object_link'><a href="../IGraph.html" title="IGraph (module)">IGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_check_error'><span class='object_link'><a href="../IGraph.html#check_error-class_method" title="IGraph.check_error (method)">check_error</a></span></span> <span class='const'><span class='object_link'><a href="LibIGraph.html" title="IGraph::LibIGraph (module)">LibIGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_igraph_is_tree'><span class='object_link'><a href="LibIGraph.html#igraph_is_tree-class_method" title="IGraph::LibIGraph.igraph_is_tree (method)">igraph_is_tree</a></span></span><span class='lparen'>(</span><span class='ivar'>@struct</span><span class='period'>.</span><span class='id identifier rubyid_pointer'>pointer</span><span class='comma'>,</span> <span class='id identifier rubyid_result_ptr'>result_ptr</span><span class='comma'>,</span> <span class='const'>FFI</span><span class='op'>::</span><span class='const'>Pointer</span><span class='op'>::</span><span class='const'>NULL</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="LibIGraph.html" title="IGraph::LibIGraph (module)">LibIGraph</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="LibIGraph.html#IGRAPH_ALL-constant" title="IGraph::LibIGraph::IGRAPH_ALL (constant)">IGRAPH_ALL</a></span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_result_ptr'>result_ptr</span><span class='period'>.</span><span class='id identifier rubyid_get_uint8'>get_uint8</span><span class='lparen'>(</span><span class='int'>0</span><span class='rparen'>)</span> <span class='op'>!=</span> <span class='int'>0</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="vcount-instance_method">
+  
+    #<strong>vcount</strong>  &#x21d2; <tt>Integer</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Returns Number of vertices.</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Number of vertices</p></div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+49
+50
+51</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/igraph/graph.rb', line 49</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_vcount'>vcount</span>
+  <span class='const'><span class='object_link'><a href="LibIGraph.html" title="IGraph::LibIGraph (module)">LibIGraph</a></span></span><span class='period'>.</span><span class='id identifier rubyid_igraph_vcount'><span class='object_link'><a href="LibIGraph.html#igraph_vcount-class_method" title="IGraph::LibIGraph.igraph_vcount (method)">igraph_vcount</a></span></span><span class='lparen'>(</span><span class='ivar'>@struct</span><span class='period'>.</span><span class='id identifier rubyid_pointer'>pointer</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="vertices-instance_method">
+  
+    #<strong>vertices</strong>  &#x21d2; <tt>Array&lt;Integer&gt;</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Returns Array of all vertex IDs.</p>
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;Integer&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Array of all vertex IDs</p></div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+185
+186
+187</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/igraph/graph.rb', line 185</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_vertices'>vertices</span>
+  <span class='id identifier rubyid_each_vertex'>each_vertex</span><span class='period'>.</span><span class='id identifier rubyid_to_a'>to_a</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Wed Aug  5 13:41:18 2026 by
+  <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.45 (ruby-4.0.6).
+</div>
+
+    </div>
+  </body>
+</html>

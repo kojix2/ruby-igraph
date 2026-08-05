@@ -35,7 +35,7 @@ module IGraph
 
     # @return [Hash{Integer => Array<Integer>}] Community ID => vertex list
     def to_h
-      @membership.each_with_object({}) do |(vid, comm), h|
+      @membership.each_with_index.with_object({}) do |(comm, vid), h|
         (h[comm] ||= []) << vid
       end
     end

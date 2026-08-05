@@ -13,18 +13,20 @@ module IGraph
     # @param path [String] File path
     # @param format [Symbol] Format (detected from extension if omitted)
     # @return [IGraph::Graph]
+    # @raise [NotImplementedError] File I/O is not implemented yet
     def self.read(path, format: nil)
       format ||= detect_format(path)
-      # TODO: Call the appropriate LibIGraph function based on format
+      raise NotImplementedError, "IGraph::IO.read is not implemented yet (format: #{format})"
     end
 
     # Write a graph to a file
     # @param graph [IGraph::Graph]
     # @param path [String] File path
     # @param format [Symbol] Format (detected from extension if omitted)
+    # @raise [NotImplementedError] File I/O is not implemented yet
     def self.write(graph, path, format: nil)
       format ||= detect_format(path)
-      # TODO: Call the appropriate LibIGraph function based on format
+      raise NotImplementedError, "IGraph::IO.write is not implemented yet (format: #{format})"
     end
 
     # Detect the format from the file extension

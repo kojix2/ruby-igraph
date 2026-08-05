@@ -28,14 +28,19 @@ module IGraph
         vertex_count = n || (max_vertex + 1)
 
         edge_vec = LibIGraph::VectorIntStruct.new
-        IGraph.check_error LibIGraph.igraph_vector_int_init(edge_vec.pointer, edges.size * 2)
-        edges.each_with_index do |(from, to), i|
-          LibIGraph.igraph_vector_int_set(edge_vec.pointer, i * 2, from)
-          LibIGraph.igraph_vector_int_set(edge_vec.pointer, i * 2 + 1, to)
-        end
+        initialized = false
+        begin
+          IGraph.check_error LibIGraph.igraph_vector_int_init(edge_vec.pointer, edges.size * 2)
+          initialized = true
+          edges.each_with_index do |(from, to), i|
+            LibIGraph.igraph_vector_int_set(edge_vec.pointer, i * 2, from)
+            LibIGraph.igraph_vector_int_set(edge_vec.pointer, i * 2 + 1, to)
+          end
 
-        IGraph.check_error LibIGraph.igraph_create(@struct.pointer, edge_vec.pointer, vertex_count, directed)
-        LibIGraph.igraph_vector_int_destroy(edge_vec.pointer)
+          IGraph.check_error LibIGraph.igraph_create(@struct.pointer, edge_vec.pointer, vertex_count, directed)
+        ensure
+          LibIGraph.igraph_vector_int_destroy(edge_vec.pointer) if initialized
+        end
       end
 
       ObjectSpace.define_finalizer(self, self.class._destroy(@struct.pointer))
@@ -77,13 +82,18 @@ module IGraph
     # @return [self]
     def add_edges(edges)
       edge_vec = LibIGraph::VectorIntStruct.new
-      IGraph.check_error LibIGraph.igraph_vector_int_init(edge_vec.pointer, edges.size * 2)
-      edges.each_with_index do |(from, to), i|
-        LibIGraph.igraph_vector_int_set(edge_vec.pointer, i * 2, from)
-        LibIGraph.igraph_vector_int_set(edge_vec.pointer, i * 2 + 1, to)
+      initialized = false
+      begin
+        IGraph.check_error LibIGraph.igraph_vector_int_init(edge_vec.pointer, edges.size * 2)
+        initialized = true
+        edges.each_with_index do |(from, to), i|
+          LibIGraph.igraph_vector_int_set(edge_vec.pointer, i * 2, from)
+          LibIGraph.igraph_vector_int_set(edge_vec.pointer, i * 2 + 1, to)
+        end
+        IGraph.check_error LibIGraph.igraph_add_edges(@struct.pointer, edge_vec.pointer, FFI::Pointer::NULL)
+      ensure
+        LibIGraph.igraph_vector_int_destroy(edge_vec.pointer) if initialized
       end
-      IGraph.check_error LibIGraph.igraph_add_edges(@struct.pointer, edge_vec.pointer, FFI::Pointer::NULL)
-      LibIGraph.igraph_vector_int_destroy(edge_vec.pointer)
       self
     end
 
@@ -91,15 +101,12 @@ module IGraph
     # @param vids [Integer, Array<Integer>] Vertex IDs to delete
     # @return [self]
     def delete_vertices(vids)
-      vids = [vids] if vids.is_a?(Integer)
-      vec = LibIGraph::VectorIntStruct.new
-      IGraph.check_error LibIGraph.igraph_vector_int_init(vec.pointer, vids.size)
-      vids.each_with_index { |v, i| LibIGraph.igraph_vector_int_set(vec.pointer, i, v) }
-      vs = LibIGraph::VertexSelector.new
-      IGraph.check_error LibIGraph.igraph_vs_vector(vs, vec.pointer)
-      IGraph.check_error LibIGraph.igraph_delete_vertices(@struct.pointer, vs)
-      LibIGraph.igraph_vs_destroy(vs)
-      LibIGraph.igraph_vector_int_destroy(vec.pointer)
+      vs = VertexSelector.resolve(vids)
+      begin
+        IGraph.check_error LibIGraph.igraph_delete_vertices(@struct.pointer, vs)
+      ensure
+        VertexSelector.destroy(vs)
+      end
       self
     end
 
@@ -107,15 +114,12 @@ module IGraph
     # @param eids [Integer, Array<Integer>] Edge IDs to delete
     # @return [self]
     def delete_edges(eids)
-      eids = [eids] if eids.is_a?(Integer)
-      vec = LibIGraph::VectorIntStruct.new
-      IGraph.check_error LibIGraph.igraph_vector_int_init(vec.pointer, eids.size)
-      eids.each_with_index { |v, i| LibIGraph.igraph_vector_int_set(vec.pointer, i, v) }
-      es = LibIGraph::EdgeSelector.new
-      IGraph.check_error LibIGraph.igraph_es_vector(es, vec.pointer)
-      IGraph.check_error LibIGraph.igraph_delete_edges(@struct.pointer, es)
-      LibIGraph.igraph_es_destroy(es)
-      LibIGraph.igraph_vector_int_destroy(vec.pointer)
+      es = EdgeSelector.resolve(eids)
+      begin
+        IGraph.check_error LibIGraph.igraph_delete_edges(@struct.pointer, es)
+      ensure
+        EdgeSelector.destroy(es)
+      end
       self
     end
 
@@ -172,11 +176,16 @@ module IGraph
     # @return [Array] When no block is given
     def each_neighbor(vid, mode: :out, &block)
       vec = LibIGraph::VectorIntStruct.new
-      IGraph.check_error LibIGraph.igraph_vector_int_init(vec.pointer, 0)
-      IGraph.check_error LibIGraph.igraph_neighbors(@struct.pointer, vec.pointer, vid, _mode_to_i(mode))
-      count = LibIGraph.igraph_vector_int_size(vec.pointer)
-      result = Array.new(count) { |i| LibIGraph.igraph_vector_int_get(vec.pointer, i) }
-      LibIGraph.igraph_vector_int_destroy(vec.pointer)
+      initialized = false
+      begin
+        IGraph.check_error LibIGraph.igraph_vector_int_init(vec.pointer, 0)
+        initialized = true
+        IGraph.check_error LibIGraph.igraph_neighbors(@struct.pointer, vec.pointer, vid, _mode_to_i(mode))
+        count = LibIGraph.igraph_vector_int_size(vec.pointer)
+        result = Array.new(count) { |i| LibIGraph.igraph_vector_int_get(vec.pointer, i) }
+      ensure
+        LibIGraph.igraph_vector_int_destroy(vec.pointer) if initialized
+      end
       return result.each(&block) if block_given?
       result
     end

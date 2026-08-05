@@ -13,6 +13,11 @@ module IGraph
   #   EdgeSelector.resolve(:all)         # => all edges
   class EdgeSelector
     # Convert a Ruby value to igraph_es_t
+    #
+    # The returned selector owns its data (vector-backed selectors are
+    # copied with igraph_es_vector_copy) and must be released with
+    # {EdgeSelector.destroy} once the underlying C call has completed.
+    #
     # @param value [Integer, Array, Range, Symbol]
     # @return [IGraph::LibIGraph::EdgeSelector] FFI struct
     def self.resolve(value)
@@ -22,13 +27,25 @@ module IGraph
         IGraph.check_error LibIGraph.igraph_es_1(es, value)
       when Array
         vec = LibIGraph::VectorIntStruct.new
-        IGraph.check_error LibIGraph.igraph_vector_int_init(vec.pointer, value.size)
-        value.each_with_index { |v, i| LibIGraph.igraph_vector_int_set(vec.pointer, i, v) }
-        IGraph.check_error LibIGraph.igraph_es_vector(es, vec.pointer)
-        LibIGraph.igraph_vector_int_destroy(vec.pointer)
+        initialized = false
+        begin
+          IGraph.check_error LibIGraph.igraph_vector_int_init(vec.pointer, value.size)
+          initialized = true
+          value.each_with_index { |v, i| LibIGraph.igraph_vector_int_set(vec.pointer, i, v) }
+          # Copy the vector into the selector: igraph_es_vector only keeps
+          # a pointer, which would dangle once the vector is destroyed.
+          IGraph.check_error LibIGraph.igraph_es_vector_copy(es, vec.pointer)
+        ensure
+          LibIGraph.igraph_vector_int_destroy(vec.pointer) if initialized
+        end
       when Range
-        first = value.first
-        last  = value.exclude_end? ? value.last - 1 : value.last
+        first = value.begin
+        last = value.end
+        raise IGraph::ArgumentError, "Edge selector range must be bounded" if first.nil? || last.nil?
+
+        # igraph uses a half-open interval, while Ruby ranges may include
+        # their endpoint.
+        last += 1 unless value.exclude_end?
         IGraph.check_error LibIGraph.igraph_es_range(es, first, last)
       when :all
         IGraph.check_error LibIGraph.igraph_es_all(es, 0)
@@ -38,6 +55,16 @@ module IGraph
         raise IGraph::ArgumentError, "Unsupported edge selector: #{value.class}"
       end
       es
+    end
+
+    # Release the resources owned by a selector created with {.resolve}.
+    # The selector must not be used afterwards.
+    #
+    # @param es [IGraph::LibIGraph::EdgeSelector]
+    # @return [nil]
+    def self.destroy(es)
+      LibIGraph.igraph_es_destroy(es)
+      nil
     end
   end
 end
